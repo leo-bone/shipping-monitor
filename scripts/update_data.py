@@ -10,7 +10,9 @@ from datetime import datetime, timedelta
 import random
 
 # 数据文件路径
-DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+SCRIPT_DIR = os.path.dirname(os.path.dirname(__file__))
+DATA_DIR = os.path.join(SCRIPT_DIR, 'data')
+PUBLIC_DATA_DIR = os.path.join(SCRIPT_DIR, 'public', 'data')
 
 def load_waterways():
     """加载水道基础数据"""
@@ -208,12 +210,21 @@ def main():
         "disclaimer": "本平台数据仅供参考，不构成航行建议"
     }
     
-    # 保存数据
+    # 保存数据到两个位置
     output_file = os.path.join(DATA_DIR, 'full_data.json')
+    public_output_file = os.path.join(PUBLIC_DATA_DIR, 'full_data.json')
+    
+    # 确保 public/data 目录存在
+    os.makedirs(PUBLIC_DATA_DIR, exist_ok=True)
+    
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(full_data, f, ensure_ascii=False, indent=2)
     
+    with open(public_output_file, 'w', encoding='utf-8') as f:
+        json.dump(full_data, f, ensure_ascii=False, indent=2)
+    
     print(f"✓ 数据已保存到: {output_file}")
+    print(f"✓ 数据已保存到: {public_output_file}")
     print("=" * 60)
     print("✅ 数据抓取完成!")
     print("=" * 60)

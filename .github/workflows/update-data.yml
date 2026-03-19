@@ -37,11 +37,6 @@ jobs:
         run: |
           python scripts/update_data.py
           
-      - name: 复制数据到 public 目录
-        run: |
-          mkdir -p public/data
-          cp data/full_data.json public/data/
-          
       - name: 提交数据更新
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
