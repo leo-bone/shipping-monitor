@@ -238,104 +238,104 @@
   ],
   "weather": {
     "ormuz": {
-      "temperature": "30-37°C",
-      "wind": "30 km/h",
-      "wave": "2-3m",
-      "visibility": "10 km",
-      "condition": "少云",
-      "condition_icon": "🌥️",
-      "humidity": "72%",
-      "updated": "2026-03-19T12:56:12.901040Z"
-    },
-    "malacca": {
-      "temperature": "29-31°C",
-      "wind": "13 km/h",
-      "wave": "1-2m",
-      "visibility": "15 km",
+      "temperature": "25-34°C",
+      "wind": "22 km/h",
+      "wave": "2-2m",
+      "visibility": "13 km",
       "condition": "多云",
       "condition_icon": "⛅",
-      "humidity": "85%",
-      "updated": "2026-03-19T12:56:12.901056Z"
+      "humidity": "77%",
+      "updated": "2026-03-19T13:06:12.554122Z"
     },
-    "suez": {
-      "temperature": "30-32°C",
-      "wind": "35 km/h",
-      "wave": "3-2m",
-      "visibility": "8 km",
-      "condition": "阴天",
-      "condition_icon": "☁️",
-      "humidity": "72%",
-      "updated": "2026-03-19T12:56:12.901063Z"
-    },
-    "panama": {
-      "temperature": "30-33°C",
-      "wind": "30 km/h",
-      "wave": "2-4m",
-      "visibility": "15 km",
+    "malacca": {
+      "temperature": "32-33°C",
+      "wind": "16 km/h",
+      "wave": "2-2m",
+      "visibility": "13 km",
       "condition": "少云",
       "condition_icon": "🌥️",
-      "humidity": "90%",
-      "updated": "2026-03-19T12:56:12.901069Z"
+      "humidity": "78%",
+      "updated": "2026-03-19T13:06:12.554138Z"
     },
-    "mandeb": {
-      "temperature": "25-33°C",
-      "wind": "33 km/h",
+    "suez": {
+      "temperature": "32-26°C",
+      "wind": "28 km/h",
       "wave": "3-3m",
-      "visibility": "10 km",
+      "visibility": "13 km",
       "condition": "晴间多云",
       "condition_icon": "🌤️",
       "humidity": "84%",
-      "updated": "2026-03-19T12:56:12.901074Z"
+      "updated": "2026-03-19T13:06:12.554145Z"
     },
-    "cape": {
-      "temperature": "35-31°C",
-      "wind": "15 km/h",
-      "wave": "3-3m",
-      "visibility": "11 km",
-      "condition": "多云",
-      "condition_icon": "⛅",
-      "humidity": "81%",
-      "updated": "2026-03-19T12:56:12.901080Z"
-    },
-    "turkish": {
-      "temperature": "29-26°C",
-      "wind": "34 km/h",
-      "wave": "2-4m",
-      "visibility": "11 km",
+    "panama": {
+      "temperature": "25-32°C",
+      "wind": "23 km/h",
+      "wave": "1-2m",
+      "visibility": "9 km",
       "condition": "阴天",
       "condition_icon": "☁️",
-      "humidity": "83%",
-      "updated": "2026-03-19T12:56:12.901086Z"
+      "humidity": "87%",
+      "updated": "2026-03-19T13:06:12.554151Z"
     },
-    "denmark": {
-      "temperature": "-2-4°C",
-      "wind": "27 km/h",
+    "mandeb": {
+      "temperature": "28-32°C",
+      "wind": "29 km/h",
       "wave": "1-2m",
-      "visibility": "14 km",
-      "condition": "多云",
-      "condition_icon": "⛅",
-      "humidity": "69%",
-      "updated": "2026-03-19T12:56:12.901097Z"
+      "visibility": "8 km",
+      "condition": "晴朗",
+      "condition_icon": "☀️",
+      "humidity": "86%",
+      "updated": "2026-03-19T13:06:12.554157Z"
     },
-    "gibraltar": {
-      "temperature": "26-33°C",
-      "wind": "15 km/h",
+    "cape": {
+      "temperature": "21-34°C",
+      "wind": "29 km/h",
+      "wave": "3-3m",
+      "visibility": "10 km",
+      "condition": "阴天",
+      "condition_icon": "☁️",
+      "humidity": "80%",
+      "updated": "2026-03-19T13:06:12.554167Z"
+    },
+    "turkish": {
+      "temperature": "21-28°C",
+      "wind": "35 km/h",
       "wave": "1-4m",
-      "visibility": "15 km",
+      "visibility": "14 km",
       "condition": "晴间多云",
       "condition_icon": "🌤️",
+      "humidity": "74%",
+      "updated": "2026-03-19T13:06:12.554173Z"
+    },
+    "denmark": {
+      "temperature": "-4-3°C",
+      "wind": "34 km/h",
+      "wave": "1-2m",
+      "visibility": "13 km",
+      "condition": "晴朗",
+      "condition_icon": "☀️",
       "humidity": "81%",
-      "updated": "2026-03-19T12:56:12.901103Z"
+      "updated": "2026-03-19T13:06:12.554182Z"
+    },
+    "gibraltar": {
+      "temperature": "29-29°C",
+      "wind": "14 km/h",
+      "wave": "1-4m",
+      "visibility": "12 km",
+      "condition": "阴天",
+      "condition_icon": "☁️",
+      "humidity": "66%",
+      "updated": "2026-03-19T13:06:12.554189Z"
     },
     "lombok": {
-      "temperature": "30-35°C",
-      "wind": "32 km/h",
-      "wave": "3-4m",
-      "visibility": "15 km",
-      "condition": "少云",
-      "condition_icon": "🌥️",
-      "humidity": "70%",
-      "updated": "2026-03-19T12:56:12.901109Z"
+      "temperature": "25-32°C",
+      "wind": "11 km/h",
+      "wave": "2-2m",
+      "visibility": "12 km",
+      "condition": "阴天",
+      "condition_icon": "☁️",
+      "humidity": "78%",
+      "updated": "2026-03-19T13:06:12.554197Z"
     }
   },
   "security": {
@@ -345,15 +345,27 @@
       "alerts": [
         {
           "type": "海盗活动",
+          "severity": "高",
+          "location": "霍尔木兹海峡海域",
+          "time": "近46小时"
+        },
+        {
+          "type": "海盗活动",
+          "severity": "高",
+          "location": "霍尔木兹海峡海域",
+          "time": "近19小时"
+        },
+        {
+          "type": "地缘政治紧张",
           "severity": "中",
           "location": "霍尔木兹海峡海域",
-          "time": "近42小时"
+          "time": "近24小时"
         }
       ],
-      "last_incident": "2026-03-13",
+      "last_incident": "2026-03-17",
       "status": "注意通行",
       "status_icon": "⚠️",
-      "updated": "2026-03-19T12:56:12.901138Z"
+      "updated": "2026-03-19T13:06:12.554211Z"
     },
     "malacca": {
       "risk_level": "中",
@@ -363,31 +375,31 @@
           "type": "拥堵",
           "severity": "中",
           "location": "马六甲海峡区域",
-          "time": "近41小时"
+          "time": "近25小时"
         }
       ],
-      "last_incident": "2026-03-15",
+      "last_incident": "2026-03-11",
       "status": "注意通行",
       "status_icon": "⚠️",
-      "updated": "2026-03-19T12:56:12.901145Z"
+      "updated": "2026-03-19T13:06:12.554216Z"
     },
     "suez": {
       "risk_level": "中",
       "risk_score": 50,
       "alerts": [],
-      "last_incident": "2026-03-11",
+      "last_incident": "2026-03-12",
       "status": "正常通航",
       "status_icon": "✅",
-      "updated": "2026-03-19T12:56:12.901147Z"
+      "updated": "2026-03-19T13:06:12.554218Z"
     },
     "panama": {
       "risk_level": "低",
       "risk_score": 20,
       "alerts": [],
-      "last_incident": "2026-03-16",
+      "last_incident": "2026-03-10",
       "status": "正常通航",
       "status_icon": "✅",
-      "updated": "2026-03-19T12:56:12.901149Z"
+      "updated": "2026-03-19T13:06:12.554221Z"
     },
     "mandeb": {
       "risk_level": "高",
@@ -397,157 +409,150 @@
           "type": "恐怖袭击风险",
           "severity": "高",
           "location": "曼德海峡海域",
-          "time": "近35小时"
+          "time": "近28小时"
         }
       ],
-      "last_incident": "2026-03-17",
+      "last_incident": "2026-03-16",
       "status": "注意通行",
       "status_icon": "⚠️",
-      "updated": "2026-03-19T12:56:12.901154Z"
+      "updated": "2026-03-19T13:06:12.554229Z"
     },
     "cape": {
       "risk_level": "中",
       "risk_score": 50,
-      "alerts": [
-        {
-          "type": "恶劣天气",
-          "severity": "中",
-          "location": "好望角区域",
-          "time": "近58小时"
-        }
-      ],
-      "last_incident": "2026-03-14",
-      "status": "注意通行",
-      "status_icon": "⚠️",
-      "updated": "2026-03-19T12:56:12.901161Z"
+      "alerts": [],
+      "last_incident": "2026-03-13",
+      "status": "正常通航",
+      "status_icon": "✅",
+      "updated": "2026-03-19T13:06:12.554231Z"
     },
     "turkish": {
       "risk_level": "中",
       "risk_score": 50,
       "alerts": [],
-      "last_incident": "2026-03-12",
+      "last_incident": "2026-03-10",
       "status": "正常通航",
       "status_icon": "✅",
-      "updated": "2026-03-19T12:56:12.901164Z"
+      "updated": "2026-03-19T13:06:12.554234Z"
     },
     "denmark": {
       "risk_level": "低",
       "risk_score": 20,
       "alerts": [],
-      "last_incident": "2026-03-17",
+      "last_incident": "2026-03-15",
       "status": "正常通航",
       "status_icon": "✅",
-      "updated": "2026-03-19T12:56:12.901166Z"
+      "updated": "2026-03-19T13:06:12.554236Z"
     },
     "gibraltar": {
       "risk_level": "低",
       "risk_score": 20,
       "alerts": [],
-      "last_incident": "2026-03-14",
+      "last_incident": "2026-03-19",
       "status": "正常通航",
       "status_icon": "✅",
-      "updated": "2026-03-19T12:56:12.901168Z"
+      "updated": "2026-03-19T13:06:12.554238Z"
     },
     "lombok": {
       "risk_level": "中",
       "risk_score": 50,
       "alerts": [],
-      "last_incident": "2026-03-14",
+      "last_incident": "2026-03-16",
       "status": "正常通航",
       "status_icon": "✅",
-      "updated": "2026-03-19T12:56:12.901170Z"
+      "updated": "2026-03-19T13:06:12.554240Z"
     }
   },
   "traffic": {
     "ormuz": {
-      "waiting_ships": 6,
-      "daily_transit": 10,
-      "avg_wait_time": "1小时",
+      "waiting_ships": 10,
+      "daily_transit": 8,
+      "avg_wait_time": "2小时",
       "queue_status": "正常通行",
       "queue_icon": "🟡",
       "congestion_level": "轻微",
-      "updated": "2026-03-19T12:56:12.901187Z"
+      "updated": "2026-03-19T13:06:12.554258Z"
     },
     "malacca": {
+      "waiting_ships": 23,
+      "daily_transit": 9,
+      "avg_wait_time": "6小时",
+      "queue_status": "严重拥堵",
+      "queue_icon": "🔴",
+      "congestion_level": "严重",
+      "updated": "2026-03-19T13:06:12.554264Z"
+    },
+    "suez": {
       "waiting_ships": 18,
-      "daily_transit": 2,
+      "daily_transit": 8,
       "avg_wait_time": "6小时",
       "queue_status": "轻微拥堵",
       "queue_icon": "🟡",
       "congestion_level": "轻微",
-      "updated": "2026-03-19T12:56:12.901192Z"
-    },
-    "suez": {
-      "waiting_ships": 16,
-      "daily_transit": -5,
-      "avg_wait_time": "4小时",
-      "queue_status": "轻微拥堵",
-      "queue_icon": "🟡",
-      "congestion_level": "轻微",
-      "updated": "2026-03-19T12:56:12.901196Z"
+      "updated": "2026-03-19T13:06:12.554271Z"
     },
     "panama": {
-      "waiting_ships": 15,
-      "daily_transit": 13,
-      "avg_wait_time": "2小时",
-      "queue_status": "轻微拥堵",
-      "queue_icon": "🟡",
-      "congestion_level": "轻微",
-      "updated": "2026-03-19T12:56:12.901200Z"
-    },
-    "mandeb": {
-      "waiting_ships": 1,
-      "daily_transit": -7,
+      "waiting_ships": 10,
+      "daily_transit": 9,
       "avg_wait_time": "1小时",
-      "queue_status": "畅通",
-      "queue_icon": "🟢",
-      "congestion_level": "无",
-      "updated": "2026-03-19T12:56:12.901206Z"
-    },
-    "cape": {
-      "waiting_ships": 0,
-      "daily_transit": 7,
-      "avg_wait_time": "1小时",
-      "queue_status": "畅通",
-      "queue_icon": "🟢",
-      "congestion_level": "无",
-      "updated": "2026-03-19T12:56:12.901212Z"
-    },
-    "turkish": {
-      "waiting_ships": 6,
-      "daily_transit": -9,
-      "avg_wait_time": "2小时",
       "queue_status": "正常通行",
       "queue_icon": "🟡",
       "congestion_level": "轻微",
-      "updated": "2026-03-19T12:56:12.901216Z"
+      "updated": "2026-03-19T13:06:12.554276Z"
     },
-    "denmark": {
-      "waiting_ships": 1,
-      "daily_transit": 15,
+    "mandeb": {
+      "waiting_ships": 0,
+      "daily_transit": -2,
       "avg_wait_time": "1小时",
       "queue_status": "畅通",
       "queue_icon": "🟢",
       "congestion_level": "无",
-      "updated": "2026-03-19T12:56:12.901223Z"
+      "updated": "2026-03-19T13:06:12.554280Z"
     },
-    "gibraltar": {
-      "waiting_ships": 20,
-      "daily_transit": 16,
+    "cape": {
+      "waiting_ships": 14,
+      "daily_transit": -9,
+      "avg_wait_time": "2小时",
+      "queue_status": "轻微拥堵",
+      "queue_icon": "🟡",
+      "congestion_level": "轻微",
+      "updated": "2026-03-19T13:06:12.554284Z"
+    },
+    "turkish": {
+      "waiting_ships": 2,
+      "daily_transit": -9,
+      "avg_wait_time": "1小时",
+      "queue_status": "畅通",
+      "queue_icon": "🟢",
+      "congestion_level": "无",
+      "updated": "2026-03-19T13:06:12.554292Z"
+    },
+    "denmark": {
+      "waiting_ships": 19,
+      "daily_transit": 23,
       "avg_wait_time": "1小时",
       "queue_status": "轻微拥堵",
       "queue_icon": "🟡",
       "congestion_level": "轻微",
-      "updated": "2026-03-19T12:56:12.901228Z"
+      "updated": "2026-03-19T13:06:12.554300Z"
     },
-    "lombok": {
-      "waiting_ships": 9,
-      "daily_transit": 16,
+    "gibraltar": {
+      "waiting_ships": 6,
+      "daily_transit": 3,
       "avg_wait_time": "3小时",
       "queue_status": "正常通行",
       "queue_icon": "🟡",
       "congestion_level": "轻微",
-      "updated": "2026-03-19T12:56:12.901232Z"
+      "updated": "2026-03-19T13:06:12.554305Z"
+    },
+    "lombok": {
+      "waiting_ships": 12,
+      "daily_transit": 15,
+      "avg_wait_time": "1小时",
+      "queue_status": "轻微拥堵",
+      "queue_icon": "🟡",
+      "congestion_level": "轻微",
+      "updated": "2026-03-19T13:06:12.554309Z"
     }
   },
   "geopolitics": {
@@ -612,8 +617,8 @@
       "advisory_level": "中"
     }
   },
-  "last_updated": "2026-03-19T12:56:12.901240Z",
-  "next_update": "2026-03-19T13:06:12.901241Z",
+  "last_updated": "2026-03-19T13:06:12.554318Z",
+  "next_update": "2026-03-19T13:16:12.554319Z",
   "data_source": "全球水道监测平台自动生成",
   "disclaimer": "本平台数据仅供参考，不构成航行建议"
 }
