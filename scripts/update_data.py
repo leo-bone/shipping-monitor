@@ -14,8 +14,12 @@ import urllib.request
 import urllib.parse
 import urllib.error
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import random
+
+# 使用北京时间 (UTC+8)
+def now_beijing():
+    return datetime.now(timezone(timedelta(hours=8)))
 
 # ==================== 配置 ====================
 # 如果有 AISHub 账号，填入用户名以获取船舶数据
@@ -542,8 +546,8 @@ def main():
         "security": security,
         "traffic": traffic,
         "geopolitics": geopolitics,
-        "last_updated": datetime.utcnow().isoformat() + 'Z',
-        "next_update": (datetime.utcnow() + timedelta(minutes=10)).isoformat() + 'Z',
+        "last_updated": now_beijing().isoformat(),
+        "next_update": (now_beijing() + timedelta(hours=1)).isoformat(),
         "data_sources": {
             "weather": "Open-Meteo API (https://open-meteo.com)",
             "traffic": "公开新闻源 (EgyptToday, Maritime News, Panama Canal Authority) + AISHub (如配置)",

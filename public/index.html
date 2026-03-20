@@ -1115,11 +1115,12 @@
             document.getElementById('alertCount').textContent = alerts;
             document.getElementById('safeCount').textContent = safe;
 
+            // 使用北京时间显示
             const updateTime = new Date(data.last_updated);
             document.getElementById('lastUpdate').textContent = 
-                updateTime.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+                updateTime.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Shanghai' });
             document.getElementById('footerUpdate').textContent = 
-                updateTime.toLocaleString('zh-CN');
+                updateTime.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
         }
 
         // Open Modal
