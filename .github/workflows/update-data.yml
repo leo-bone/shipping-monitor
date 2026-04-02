@@ -29,13 +29,13 @@ jobs:
 
       - name: Run LLM update script
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          if [ -n "$ANTHROPIC_API_KEY" ]; then
-            echo "✅ ANTHROPIC_API_KEY 已配置，使用 LLM 智能更新"
+          if [ -n "$GEMINI_API_KEY" ]; then
+            echo "✅ GEMINI_API_KEY 已配置，使用 LLM 智能更新"
             python3 scripts/llm_update.py
           else
-            echo "⚠️  ANTHROPIC_API_KEY 未配置，使用基础脚本更新"
+            echo "⚠️  GEMINI_API_KEY 未配置，使用基础脚本更新"
             python3 scripts/update_data.py
           fi
 
