@@ -1,0 +1,80 @@
+name: Update Shipping Data
+
+on:
+  # 每小时整点自动运行
+  schedule:
+    - cron: '0 * * * *'
+  # 允许手动触发
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run LLM update script
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            echo "✅ ANTHROPIC_API_KEY 已配置，使用 LLM 智能更新"
+            python3 scripts/llm_update.py
+          else
+            echo "⚠️  ANTHROPIC_API_KEY 未配置，使用基础脚本更新"
+            python3 scripts/update_data.py
+          fi
+
+      - name: Commit and push data
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "📭 数据无变化，跳过提交"
+          else
+            git commit -m "data: 自动更新水道数据 $(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M') 北京时间"
+            git push origin main
+          fi
+
+  deploy:
+    needs: update-data
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main  # 确保拿到最新 commit（包含刚更新的数据）
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'public'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
