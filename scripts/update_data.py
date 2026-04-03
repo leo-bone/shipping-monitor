@@ -314,9 +314,21 @@ def fetch_news_data():
 
 
 def load_waterways():
-    """加载水道基础数据"""
-    with open(os.path.join(DATA_DIR, 'waterways.json'), 'r', encoding='utf-8') as f:
-        return json.load(f)
+    """加载水道基础数据
+    优先从 public/data/full_data.json 提取，备选从 data/waterways.json 读取
+    """
+    # 优先从 full_data.json 提取（因为 waterways.json 可能不存在）
+    full_data_path = os.path.join(PUBLIC_DATA_DIR, 'full_data.json')
+    if os.path.exists(full_data_path):
+        with open(full_data_path, 'r', encoding='utf-8') as f:
+            full = json.load(f)
+        return {"waterways": full["waterways"]}
+    # 备选：从独立的 waterways.json 读取
+    waterways_path = os.path.join(DATA_DIR, 'waterways.json')
+    if os.path.exists(waterways_path):
+        with open(waterways_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    raise FileNotFoundError(f"找不到水道数据: {full_data_path} 或 {waterways_path}")
 
 def fetch_weather_from_api(lat, lon):
     """从 Open-Meteo API 获取真实天气数据"""

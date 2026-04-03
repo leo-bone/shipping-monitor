@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-全球水道数据 LLM 智能更新脚本 v2.0
-使用 Google Gemini API 获取最新水道状态，替代硬编码数据。
+全球水道数据 LLM 智能更新脚本 v3.0
+使用 Google Gemini API 分析最新水道状态，更新 full_data.json。
 
 依赖: requests
 配置: 设置环境变量 GEMINI_API_KEY
@@ -9,18 +9,15 @@
 
 import json
 import os
-import urllib.request
-import urllib.error
 import requests
 from datetime import datetime, timedelta, timezone
 
 # ==================== 配置 ====================
 GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', '')
 SCRIPT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(SCRIPT_DIR, 'data')
 PUBLIC_DATA_DIR = os.path.join(SCRIPT_DIR, 'public', 'data')
+DATA_FILE = os.path.join(PUBLIC_DATA_DIR, 'full_data.json')  # 修正：正确文件名
 
-# 使用北京时间 (UTC+8)
 def now_beijing():
     return datetime.now(timezone(timedelta(hours=8)))
 
@@ -28,140 +25,247 @@ def now_beijing():
 # ==================== 天气获取（Open-Meteo 免费无需 API Key） ====================
 WATERWAY_COORDS = {
     "ormuz":     {"lat": 26.5,  "lon": 56.3,   "name": "霍尔木兹海峡"},
-    "malacca":   {"lat": 2.0,   "lon": 100.5,  "name": "马六甲海峡"},
+    "malacca":   {"lat": 1.4,   "lon": 100.9,  "name": "马六甲海峡"},
     "suez":      {"lat": 30.5,  "lon": 32.5,   "name": "苏伊士运河"},
-    "panama":    {"lat": 9.0,   "lon": -79.5,  "name": "巴拿马运河"},
-    "bab_mandab":{"lat": 12.5,  "lon": 43.5,   "name": "曼德海峡"},
-    "bosporus":  {"lat": 41.0,  "lon": 29.0,   "name": "博斯普鲁斯海峡"},
-    "gibraltar": {"lat": 36.0,  "lon": -5.5,   "name": "直布罗陀海峡"},
-    "sunda":     {"lat": -6.0,  "lon": 105.5,  "name": "巽他海峡"},
-    "lombok":    {"lat": -8.5,  "lon": 115.5,  "name": "龙目海峡"},
-    "taiwan":    {"lat": 23.5,  "lon": 121.0,  "name": "台湾海峡"},
+    "panama":    {"lat": 9.1,   "lon": -79.6,  "name": "巴拿马运河"},
+    "mandeb":    {"lat": 12.6,  "lon": 43.2,   "name": "曼德海峡"},
+    "cape":      {"lat": -34.4, "lon": 18.5,   "name": "好望角"},
+    "turkish":   {"lat": 41.2,  "lon": 28.9,   "name": "土耳其海峡"},
+    "denmark":   {"lat": 66.0,  "lon": -22.0,  "name": "丹麦海峡"},
+    "gibraltar": {"lat": 36.1,  "lon": -5.5,   "name": "直布罗陀海峡"},
+    "lombok":    {"lat": -8.5,  "lon": 115.8,  "name": "龙目海峡"},
 }
 
-def fetch_weather(lat, lon):
+WEATHER_CODES = {
+    0: ("晴朗", "☀️"), 1: ("晴间多云", "🌤️"), 2: ("多云", "⛅"), 3: ("阴天", "☁️"),
+    45: ("雾", "🌫️"), 48: ("雾", "🌫️"),
+    51: ("小雨", "🌧️"), 53: ("中雨", "🌧️"), 55: ("大雨", "🌧️"),
+    61: ("小雨", "🌧️"), 63: ("中雨", "🌧️"), 65: ("大雨", "🌧️"),
+    71: ("小雪", "🌨️"), 73: ("中雪", "🌨️"), 75: ("大雪", "❄️"),
+    80: ("阵雨", "🌦️"), 81: ("阵雨", "🌦️"), 82: ("强阵雨", "🌦️"),
+    95: ("雷暴", "⛈️"), 96: ("雷暴", "⛈️"), 99: ("雷暴", "⛈️"),
+}
+
+def fetch_weather(wid):
+    """获取指定水道的真实天气数据"""
+    coords = WATERWAY_COORDS.get(wid)
+    if not coords:
+        return None
+    lat, lon = coords["lat"], coords["lon"]
     url = (
         f"https://api.open-meteo.com/v1/forecast"
         f"?latitude={lat}&longitude={lon}"
-        f"&current=wind_speed_10m,wind_direction_10m,weather_code"
-        f"&wind_speed_unit=kn&timezone=auto"
+        f"&current=temperature_2m,relative_humidity_2m,apparent_temperature,"
+        f"weather_code,wind_speed_10m,wind_direction_10m"
+        f"&timezone=auto"
     )
     try:
         r = requests.get(url, timeout=10)
-        data = r.json().get("current", {})
-        wcode = data.get("weather_code", 0)
+        r.raise_for_status()
+        current = r.json().get("current", {})
+        wcode = current.get("weather_code", 0)
+        cond, icon = WEATHER_CODES.get(wcode, ("未知", "❓"))
+        wind_spd = current.get("wind_speed_10m", 0)
+        wind_dir = current.get("wind_direction_10m", 0)
+        directions = ["北", "东北", "东", "东南", "南", "西南", "西", "西北"]
+        dir_idx = int((wind_dir + 22.5) // 45) % 8
         return {
-            "wind_speed": round(data.get("wind_speed_10m", 0) * 0.539957, 1),
-            "wind_dir": data.get("wind_direction_10m", 0),
-            "description": WEATHER_CODES.get(wcode, "未知"),
+            "temperature": f"{int(current.get('temperature_2m', 0))}°C",
+            "feels_like": f"{int(current.get('apparent_temperature', 0))}°C",
+            "wind": f"{int(wind_spd)} km/h {directions[dir_idx]}",
+            "wave": "N/A",
+            "visibility": "10 km",
+            "condition": cond,
+            "condition_icon": icon,
+            "humidity": f"{int(current.get('relative_humidity_2m', 0))}%",
+            "updated": datetime.utcnow().isoformat() + 'Z',
+            "data_source": "Open-Meteo API"
         }
     except Exception as e:
-        return {"wind_speed": 0, "wind_dir": 0, "description": f"获取失败: {e}"}
-
-WEATHER_CODES = {
-    0: "晴朗", 1: "晴间多云", 2: "多云", 3: "阴天",
-    45: "雾", 48: "霜雾", 51: "小毛毛雨", 53: "中毛毛雨",
-    55: "大毛毛雨", 61: "小雨", 63: "中雨", 65: "大雨",
-    80: "阵雨", 81: "中阵雨", 82: "强阵雨",
-    95: "雷暴", 96: "雷暴伴小冰雹", 99: "雷暴伴大冰雹",
-}
+        print(f"  ⚠️  {wid} 天气获取失败: {e}")
+        return None
 
 
-# ==================== Gemini LLM 分析 ====================
-WATERWAY_PROMPTS = {
-    "ormuz": "分析霍尔木兹海峡当前航运状况：1) 近期船只通行量 2) 地缘政治紧张程度（美伊/中东局势） 3) 保险费用/战争险 4) 整体风险评级。简洁输出JSON格式。",
-    "malacca": "分析马六甲海峡当前航运状况：1) 近期船只通行量 2) 海盗/安全威胁情况 3) 通行效率 4) 整体风险评级。简洁输出JSON格式。",
-    "suez": "分析苏伊士运河当前航运状况：1) 近期通行船只数量 2) 运河通航状况/维护情况 3) 胡塞武装/红海局势影响 4) 整体风险评级。简洁输出JSON格式。",
-    "panama": "分析巴拿马运河当前航运状况：1) 水位/干旱情况对通行的影响 2) 等待船只数量 3) 通行费变化 4) 整体风险评级。简洁输出JSON格式。",
-    "bab_mandab": "分析曼德海峡当前航运状况：1) 胡塞武装袭击情况 2) 船只通行量变化 3) 保险费用 4) 整体风险评级。简洁输出JSON格式。",
-    "bosporus": "分析博斯普鲁斯海峡当前航运状况：1) 近期通行船只数量 2) 土俄局势影响 3) 等待时间 4) 整体风险评级。简洁输出JSON格式。",
-    "gibraltar": "分析直布罗陀海峡当前航运状况：1) 近期通行量 2) 天气/海况 3) 地缘因素（俄乌/地中海局势） 4) 整体风险评级。简洁输出JSON格式。",
-    "sunda": "分析巽他海峡当前航运状况：1) 近期通行量 2) 海盗/安全威胁 3) 相比马六甲的选择情况 4) 整体风险评级。简洁输出JSON格式。",
-    "lombok": "分析龙目海峡当前航运状况：1) 近期通行量 2) 海况 3) 作为马六甲替代路线的使用情况 4) 整体风险评级。简洁输出JSON格式。",
-    "taiwan": "分析台湾海峡当前航运状况：1) 近期两岸紧张局势 2) 商船通行情况 3) 军事活动影响 4) 整体风险评级。简洁输出JSON格式。",
-}
+# ==================== Gemini LLM 批量分析 ====================
+BATCH_PROMPT_TEMPLATE = """你是航运情报分析师。请根据当前（{date}）最新情况，分析以下10个关键水道的航运状态。
 
-def analyze_with_gemini(wave_id, current_data):
-    """调用 Gemini API 获取水道智能分析"""
-    prompt = WATERWAY_PROMPTS.get(wave_id, f"分析 {wave_id} 水道当前状况。")
-    context = f"当前数据: 交通量{current_data.get('traffic', 'N/A')}, "
-    context += f"风险评级{current_data.get('risk_level', 'N/A')}, "
-    context += f"天气{current_data.get('weather', 'N/A')}, "
-    context += f"备注{current_data.get('notes', 'N/A')}"
-    full_prompt = f"{prompt}\n\n{context}\n\n请以JSON格式返回，字段：traffic(交通量描述), risk_level(1-5), reason(原因简述), notes(补充备注)，中文回答。"
+请以严格的JSON格式返回，结构如下：
+{{
+  "ormuz":     {{"traffic": "交通量描述", "risk_level": "高/中/低", "risk_score": 数字0-100, "status": "状态", "notes": "备注", "advisory": "建议"}},
+  "malacca":   {{"traffic": "交通量描述", "risk_level": "高/中/低", "risk_score": 数字0-100, "status": "状态", "notes": "备注", "advisory": "建议"}},
+  "suez":      {{"traffic": "交通量描述", "risk_level": "高/中/低", "risk_score": 数字0-100, "status": "状态", "notes": "备注", "advisory": "建议"}},
+  "panama":    {{"traffic": "交通量描述", "risk_level": "高/中/低", "risk_score": 数字0-100, "status": "状态", "notes": "备注", "advisory": "建议"}},
+  "mandeb":    {{"traffic": "交通量描述", "risk_level": "高/中/低", "risk_score": 数字0-100, "status": "状态", "notes": "备注", "advisory": "建议"}},
+  "cape":      {{"traffic": "交通量描述", "risk_level": "高/中/低", "risk_score": 数字0-100, "status": "状态", "notes": "备注", "advisory": "建议"}},
+  "turkish":   {{"traffic": "交通量描述", "risk_level": "高/中/低", "risk_score": 数字0-100, "status": "状态", "notes": "备注", "advisory": "建议"}},
+  "denmark":   {{"traffic": "交通量描述", "risk_level": "高/中/低", "risk_score": 数字0-100, "status": "状态", "notes": "备注", "advisory": "建议"}},
+  "gibraltar": {{"traffic": "交通量描述", "risk_level": "高/中/低", "risk_score": 数字0-100, "status": "状态", "notes": "备注", "advisory": "建议"}},
+  "lombok":    {{"traffic": "交通量描述", "risk_level": "高/中/低", "risk_score": 数字0-100, "status": "状态", "notes": "备注", "advisory": "建议"}}
+}}
+
+重要要求：
+1. 所有回答用中文
+2. risk_score 为 0-100 的整数
+3. 基于 {date} 最新的地缘政治/航运实际情况给出评估
+4. notes 字段包含当前最重要的一句简洁提示（30字以内）
+5. 只返回 JSON，不要任何其他文字"""
+
+
+def analyze_all_with_gemini():
+    """一次性调用 Gemini 分析所有水道，节省 API 配额"""
+    today = now_beijing().strftime("%Y年%m月%d日")
+    prompt = BATCH_PROMPT_TEMPLATE.format(date=today)
 
     url = (
-        f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
-        f"?key={GEMINI_API_KEY}"
+        "https://generativelanguage.googleapis.com/v1beta/"
+        f"models/gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
     )
     payload = {
-        "contents": [{"parts": [{"text": full_prompt}]}],
+        "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "responseMimeType": "application/json",
-            "maxOutputTokens": 256,
+            "maxOutputTokens": 2048,
             "temperature": 0.3,
         }
     }
 
     try:
-        r = requests.post(url, json=payload, timeout=30)
+        r = requests.post(url, json=payload, timeout=60)
         r.raise_for_status()
-        data = r.json()
-        text = data["candidates"][0]["content"]["parts"][0]["text"]
-        return json.loads(text)
+        text = r.json()["candidates"][0]["content"]["parts"][0]["text"]
+        result = json.loads(text)
+        print(f"  ✅ Gemini 分析完成，覆盖 {len(result)} 个水道")
+        return result
     except Exception as e:
-        return {
-            "traffic": current_data.get("traffic", "未知"),
-            "risk_level": current_data.get("risk_level", 3),
-            "reason": f"LLM分析获取失败: {e}",
-            "notes": current_data.get("notes", "")
-        }
+        print(f"  ⚠️  Gemini 批量分析失败: {e}")
+        return {}
 
 
 # ==================== 主逻辑 ====================
 def main():
-    timestamp = now_beijing().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"[{timestamp}] 开始 LLM 智能更新...")
+    ts_beijing = now_beijing()
+    timestamp = ts_beijing.strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{timestamp}] 开始 LLM 智能更新 v3.0...")
 
     if not GEMINI_API_KEY:
         print("⚠️  未设置 GEMINI_API_KEY，跳过 LLM 更新")
         return
 
-    data_file = os.path.join(PUBLIC_DATA_DIR, "shipping_data.json")
-    if not os.path.exists(data_file):
-        print(f"⚠️  数据文件不存在: {data_file}")
+    # 加载现有数据
+    if not os.path.exists(DATA_FILE):
+        print(f"⚠️  数据文件不存在: {DATA_FILE}")
         return
 
-    with open(data_file, "r", encoding="utf-8") as f:
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    updated_count = 0
-    for waterway in data.get("waterways", []):
-        wid = waterway.get("id")
-        if wid not in WATERWAY_COORDS:
-            continue
+    # 1. 更新天气数据（每次都刷新）
+    print("📡 更新天气数据...")
+    weather = data.get("weather", {})
+    for wid in WATERWAY_COORDS:
+        w = fetch_weather(wid)
+        if w:
+            weather[wid] = w
+            print(f"  ✅ {WATERWAY_COORDS[wid]['name']}: {w['condition']} {w['temperature']}")
+    data["weather"] = weather
 
-        coords = WATERWAY_COORDS[wid]
-        weather = fetch_weather(coords["lat"], coords["lon"])
-        waterway["weather"] = f"{weather['description']}, 风速{weather['wind_speed']}节"
-        waterway["last_updated"] = timestamp
+    # 2. 调用 Gemini 分析所有水道（仅1次请求，节省配额）
+    print("🤖 调用 Gemini 分析水道状态...")
+    llm_results = analyze_all_with_gemini()
 
-        # 优先使用 LLM 分析（覆盖风险和备注）
-        llm_result = analyze_with_gemini(wid, waterway)
-        if llm_result:
-            waterway["risk_level"] = llm_result.get("risk_level", waterway["risk_level"])
-            waterway["traffic"] = llm_result.get("traffic", waterway["traffic"])
-            waterway["notes"] = llm_result.get("notes", waterway.get("notes", ""))
-            print(f"  ✅ {coords['name']}: 风险{waterway['risk_level']} | {llm_result.get('reason', '')}")
-        else:
-            print(f"  ⚠️  {coords['name']}: LLM 失败，使用缓存")
+    if llm_results:
+        security = data.get("security", {})
+        traffic = data.get("traffic", {})
+        geopolitics = data.get("geopolitics", {})
+        now_iso = ts_beijing.isoformat()
+        today_str = ts_beijing.strftime("%Y-%m-%d")
 
-        updated_count += 1
+        for wid, result in llm_results.items():
+            risk_level = result.get("risk_level", "中")
+            risk_score = result.get("risk_score", 50)
+            notes = result.get("notes", "")
+            advisory = result.get("advisory", "正常通行")
+            status = result.get("status", "正常")
+            traffic_desc = result.get("traffic", "正常")
 
-    with open(data_file, "w", encoding="utf-8") as f:
+            # 更新 security
+            if wid in security:
+                security[wid]["risk_level"] = risk_level
+                security[wid]["risk_score"] = int(risk_score)
+                security[wid]["updated"] = now_iso
+                security[wid]["last_incident"] = today_str
+                # 更新 status
+                if risk_level == "高":
+                    security[wid]["status"] = "高度关注"
+                    security[wid]["status_icon"] = "⚠️"
+                elif risk_level == "中":
+                    security[wid]["status"] = "适度关注"
+                    security[wid]["status_icon"] = "⚠️"
+                else:
+                    security[wid]["status"] = "正常通航"
+                    security[wid]["status_icon"] = "✅"
+            else:
+                security[wid] = {
+                    "risk_level": risk_level,
+                    "risk_score": int(risk_score),
+                    "alerts": [],
+                    "status": status,
+                    "status_icon": "⚠️" if risk_level in ("高", "中") else "✅",
+                    "last_incident": today_str,
+                    "updated": now_iso
+                }
+
+            # 更新 traffic
+            if wid in traffic:
+                traffic[wid]["queue_status"] = status
+                traffic[wid]["notes"] = notes
+                traffic[wid]["data_source"] = "Gemini AI 分析"
+                traffic[wid]["updated"] = datetime.utcnow().isoformat() + 'Z'
+                # 根据风险更新图标
+                if risk_level == "高":
+                    traffic[wid]["queue_icon"] = "🔴"
+                elif risk_level == "中":
+                    traffic[wid]["queue_icon"] = "🟡"
+                else:
+                    traffic[wid]["queue_icon"] = "🟢"
+            else:
+                traffic[wid] = {
+                    "waiting_ships": 0,
+                    "daily_transit": traffic_desc,
+                    "avg_wait_time": "N/A",
+                    "queue_status": status,
+                    "queue_icon": "🟡" if risk_level in ("高", "中") else "🟢",
+                    "congestion_level": risk_level,
+                    "notes": notes,
+                    "updated": datetime.utcnow().isoformat() + 'Z',
+                    "data_source": "Gemini AI 分析"
+                }
+
+            # 更新 geopolitics
+            geopolitics[wid] = {
+                "status": status,
+                "detail": advisory,
+                "last_review": today_str,
+                "advisory_level": risk_level
+            }
+
+            print(f"  📊 {WATERWAY_COORDS.get(wid, {}).get('name', wid)}: {risk_level}风险({risk_score}) - {notes}")
+
+        data["security"] = security
+        data["traffic"] = traffic
+        data["geopolitics"] = geopolitics
+
+    # 3. 更新时间戳
+    data["last_updated"] = ts_beijing.isoformat()
+    data["next_update"] = (ts_beijing + timedelta(hours=1)).isoformat()
+
+    # 4. 保存
+    os.makedirs(PUBLIC_DATA_DIR, exist_ok=True)
+    with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"\n✅ 更新完成！共更新 {updated_count} 条水道数据")
+    print(f"\n✅ 更新完成！时间: {timestamp}")
+    print(f"   文件: {DATA_FILE}")
 
 
 if __name__ == "__main__":
