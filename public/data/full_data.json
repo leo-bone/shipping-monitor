@@ -240,13 +240,13 @@
     "ormuz": {
       "temperature": "23°C",
       "feels_like": "22°C",
-      "wind": "39 km/h 西南",
+      "wind": "38 km/h 西南",
       "wave": "N/A",
       "visibility": "10 km",
-      "condition": "多云",
-      "condition_icon": "⛅",
+      "condition": "晴间多云",
+      "condition_icon": "🌤️",
       "humidity": "86%",
-      "updated": "2026-04-05T22:35:20.892697Z",
+      "updated": "2026-04-05T23:37:43.708128Z",
       "data_source": "Open-Meteo API"
     },
     "malacca": {
@@ -258,55 +258,55 @@
       "condition": "阴天",
       "condition_icon": "☁️",
       "humidity": "96%",
-      "updated": "2026-04-05T22:35:21.504501Z",
+      "updated": "2026-04-05T23:37:44.326394Z",
       "data_source": "Open-Meteo API"
     },
     "suez": {
       "temperature": "15°C",
       "feels_like": "14°C",
-      "wind": "15 km/h 北",
-      "wave": "N/A",
-      "visibility": "10 km",
-      "condition": "晴朗",
-      "condition_icon": "☀️",
-      "humidity": "79%",
-      "updated": "2026-04-05T22:35:22.122231Z",
-      "data_source": "Open-Meteo API"
-    },
-    "panama": {
-      "temperature": "27°C",
-      "feels_like": "30°C",
-      "wind": "15 km/h 西北",
-      "wave": "N/A",
-      "visibility": "10 km",
-      "condition": "多云",
-      "condition_icon": "⛅",
-      "humidity": "72%",
-      "updated": "2026-04-05T22:35:22.750099Z",
-      "data_source": "Open-Meteo API"
-    },
-    "mandeb": {
-      "temperature": "28°C",
-      "feels_like": "30°C",
-      "wind": "8 km/h 东南",
+      "wind": "12 km/h 北",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "晴间多云",
       "condition_icon": "🌤️",
-      "humidity": "55%",
-      "updated": "2026-04-05T22:35:23.361319Z",
+      "humidity": "86%",
+      "updated": "2026-04-05T23:37:44.963562Z",
+      "data_source": "Open-Meteo API"
+    },
+    "panama": {
+      "temperature": "26°C",
+      "feels_like": "29°C",
+      "wind": "12 km/h 西北",
+      "wave": "N/A",
+      "visibility": "10 km",
+      "condition": "多云",
+      "condition_icon": "⛅",
+      "humidity": "78%",
+      "updated": "2026-04-05T23:37:45.584721Z",
+      "data_source": "Open-Meteo API"
+    },
+    "mandeb": {
+      "temperature": "27°C",
+      "feels_like": "29°C",
+      "wind": "8 km/h 东南",
+      "wave": "N/A",
+      "visibility": "10 km",
+      "condition": "多云",
+      "condition_icon": "⛅",
+      "humidity": "58%",
+      "updated": "2026-04-05T23:37:46.220245Z",
       "data_source": "Open-Meteo API"
     },
     "cape": {
       "temperature": "18°C",
       "feels_like": "16°C",
-      "wind": "16 km/h 西南",
+      "wind": "15 km/h 西南",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "多云",
       "condition_icon": "⛅",
-      "humidity": "72%",
-      "updated": "2026-04-05T22:35:23.977759Z",
+      "humidity": "70%",
+      "updated": "2026-04-05T23:37:46.829759Z",
       "data_source": "Open-Meteo API"
     },
     "turkish": {
@@ -318,31 +318,31 @@
       "condition": "晴朗",
       "condition_icon": "☀️",
       "humidity": "91%",
-      "updated": "2026-04-05T22:35:24.586747Z",
+      "updated": "2026-04-05T23:37:47.471084Z",
       "data_source": "Open-Meteo API"
     },
     "denmark": {
       "temperature": "-3°C",
       "feels_like": "-9°C",
-      "wind": "23 km/h 东北",
+      "wind": "21 km/h 东北",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "阴天",
       "condition_icon": "☁️",
-      "humidity": "98%",
-      "updated": "2026-04-05T22:35:25.217555Z",
+      "humidity": "97%",
+      "updated": "2026-04-05T23:37:48.097174Z",
       "data_source": "Open-Meteo API"
     },
     "gibraltar": {
       "temperature": "12°C",
       "feels_like": "11°C",
-      "wind": "8 km/h 东",
+      "wind": "9 km/h 东",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "晴朗",
       "condition_icon": "☀️",
       "humidity": "83%",
-      "updated": "2026-04-05T22:35:25.827990Z",
+      "updated": "2026-04-05T23:37:48.705073Z",
       "data_source": "Open-Meteo API"
     },
     "lombok": {
@@ -351,10 +351,10 @@
       "wind": "5 km/h 西南",
       "wave": "N/A",
       "visibility": "10 km",
-      "condition": "阵雨",
-      "condition_icon": "🌦️",
-      "humidity": "86%",
-      "updated": "2026-04-05T22:35:26.466462Z",
+      "condition": "阴天",
+      "condition_icon": "☁️",
+      "humidity": "85%",
+      "updated": "2026-04-05T23:37:49.315241Z",
       "data_source": "Open-Meteo API"
     }
   },
@@ -671,8 +671,8 @@
       "advisory_level": "低"
     }
   },
-  "last_updated": "2026-04-06T06:35:20.257391+08:00",
-  "next_update": "2026-04-06T07:35:20.257391+08:00",
+  "last_updated": "2026-04-06T07:37:43.084605+08:00",
+  "next_update": "2026-04-06T08:37:43.084605+08:00",
   "data_sources": {
     "weather": "Open-Meteo API (https://open-meteo.com) - 真实实时天气",
     "traffic": "Panama Canal Authority官网 + BIMCO + UKMTO实时预警 + 公开航运新闻",
