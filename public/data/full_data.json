@@ -246,31 +246,31 @@
       "condition": "晴间多云",
       "condition_icon": "🌤️",
       "humidity": "85%",
-      "updated": "2026-04-05T18:50:33.612582Z",
+      "updated": "2026-04-05T19:35:41.135914Z",
       "data_source": "Open-Meteo API"
     },
     "malacca": {
       "temperature": "25°C",
       "feels_like": "30°C",
-      "wind": "3 km/h 南",
+      "wind": "2 km/h 南",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "雷暴",
       "condition_icon": "⛈️",
       "humidity": "94%",
-      "updated": "2026-04-05T18:50:34.244111Z",
+      "updated": "2026-04-05T19:35:41.510987Z",
       "data_source": "Open-Meteo API"
     },
     "suez": {
-      "temperature": "19°C",
+      "temperature": "18°C",
       "feels_like": "15°C",
-      "wind": "20 km/h 东",
+      "wind": "15 km/h 东北",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "晴间多云",
       "condition_icon": "🌤️",
-      "humidity": "43%",
-      "updated": "2026-04-05T18:50:34.849908Z",
+      "humidity": "47%",
+      "updated": "2026-04-05T19:35:41.887397Z",
       "data_source": "Open-Meteo API"
     },
     "panama": {
@@ -281,32 +281,32 @@
       "visibility": "10 km",
       "condition": "阴天",
       "condition_icon": "☁️",
-      "humidity": "59%",
-      "updated": "2026-04-05T18:50:35.460629Z",
+      "humidity": "60%",
+      "updated": "2026-04-05T19:35:42.261183Z",
       "data_source": "Open-Meteo API"
     },
     "mandeb": {
       "temperature": "28°C",
       "feels_like": "30°C",
-      "wind": "13 km/h 东南",
+      "wind": "11 km/h 东南",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "晴朗",
       "condition_icon": "☀️",
-      "humidity": "63%",
-      "updated": "2026-04-05T18:50:36.091641Z",
+      "humidity": "60%",
+      "updated": "2026-04-05T19:35:42.639330Z",
       "data_source": "Open-Meteo API"
     },
     "cape": {
       "temperature": "19°C",
       "feels_like": "16°C",
-      "wind": "20 km/h 西南",
+      "wind": "19 km/h 西南",
       "wave": "N/A",
       "visibility": "10 km",
-      "condition": "阴天",
-      "condition_icon": "☁️",
-      "humidity": "63%",
-      "updated": "2026-04-05T18:50:36.700272Z",
+      "condition": "晴间多云",
+      "condition_icon": "🌤️",
+      "humidity": "61%",
+      "updated": "2026-04-05T19:35:43.032056Z",
       "data_source": "Open-Meteo API"
     },
     "turkish": {
@@ -317,32 +317,32 @@
       "visibility": "10 km",
       "condition": "晴间多云",
       "condition_icon": "🌤️",
-      "humidity": "94%",
-      "updated": "2026-04-05T18:50:37.330874Z",
+      "humidity": "95%",
+      "updated": "2026-04-05T19:35:43.417760Z",
       "data_source": "Open-Meteo API"
     },
     "denmark": {
       "temperature": "-3°C",
       "feels_like": "-9°C",
-      "wind": "26 km/h 东",
+      "wind": "25 km/h 东",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "阴天",
       "condition_icon": "☁️",
       "humidity": "97%",
-      "updated": "2026-04-05T18:50:37.939411Z",
+      "updated": "2026-04-05T19:35:43.819682Z",
       "data_source": "Open-Meteo API"
     },
     "gibraltar": {
       "temperature": "13°C",
-      "feels_like": "12°C",
-      "wind": "9 km/h 东",
+      "feels_like": "11°C",
+      "wind": "8 km/h 东",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "晴朗",
       "condition_icon": "☀️",
-      "humidity": "80%",
-      "updated": "2026-04-05T18:50:38.571256Z",
+      "humidity": "84%",
+      "updated": "2026-04-05T19:35:44.418255Z",
       "data_source": "Open-Meteo API"
     },
     "lombok": {
@@ -354,7 +354,7 @@
       "condition": "阵雨",
       "condition_icon": "🌦️",
       "humidity": "88%",
-      "updated": "2026-04-05T18:50:39.187743Z",
+      "updated": "2026-04-05T19:35:44.801752Z",
       "data_source": "Open-Meteo API"
     }
   },
@@ -671,8 +671,8 @@
       "advisory_level": "低"
     }
   },
-  "last_updated": "2026-04-06T02:50:32.966103+08:00",
-  "next_update": "2026-04-06T03:50:32.966103+08:00",
+  "last_updated": "2026-04-06T03:35:40.747356+08:00",
+  "next_update": "2026-04-06T04:35:40.747356+08:00",
   "data_sources": {
     "weather": "Open-Meteo API (https://open-meteo.com) - 真实实时天气",
     "traffic": "Panama Canal Authority官网 + BIMCO + UKMTO实时预警 + 公开航运新闻",
