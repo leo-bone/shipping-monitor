@@ -671,8 +671,8 @@
       "advisory_level": "低"
     }
   },
-  "last_updated": "2026-04-07T17:07:14.186342+08:00",
-  "next_update": "2026-04-07T18:07:14.186342+08:00",
+  "last_updated": "2026-04-07T18:59:26.318846+08:00",
+  "next_update": "2026-04-07T19:59:26.318846+08:00",
   "data_sources": {
     "weather": "Open-Meteo API (https://open-meteo.com) - 真实实时天气",
     "traffic": "Panama Canal Authority官网 + BIMCO + UKMTO实时预警 + 公开航运新闻",
