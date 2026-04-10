@@ -173,13 +173,14 @@ def main():
     print("🤖 调用 Gemini 分析水道状态...")
     llm_results = analyze_all_with_gemini()
 
-    if llm_results:
-        security = data.get("security", {})
-        traffic = data.get("traffic", {})
-        geopolitics = data.get("geopolitics", {})
-        now_iso = ts_beijing.isoformat()
-        today_str = ts_beijing.strftime("%Y-%m-%d")
+    security = data.get("security", {})
+    traffic = data.get("traffic", {})
+    geopolitics = data.get("geopolitics", {})
+    now_iso = ts_beijing.isoformat()
+    today_str = ts_beijing.strftime("%Y-%m-%d")
 
+    if llm_results:
+        # ── Gemini 成功：用 AI 分析结果更新 ──
         for wid, result in llm_results.items():
             risk_level = result.get("risk_level", "中")
             risk_score = result.get("risk_score", 50)
@@ -194,7 +195,6 @@ def main():
                 security[wid]["risk_score"] = int(risk_score)
                 security[wid]["updated"] = now_iso
                 security[wid]["last_incident"] = today_str
-                # 更新 status
                 if risk_level == "高":
                     security[wid]["status"] = "高度关注"
                     security[wid]["status_icon"] = "⚠️"
@@ -221,7 +221,6 @@ def main():
                 traffic[wid]["notes"] = notes
                 traffic[wid]["data_source"] = "Gemini AI 分析"
                 traffic[wid]["updated"] = datetime.utcnow().isoformat() + 'Z'
-                # 根据风险更新图标
                 if risk_level == "高":
                     traffic[wid]["queue_icon"] = "🔴"
                 elif risk_level == "中":
@@ -251,9 +250,92 @@ def main():
 
             print(f"  📊 {WATERWAY_COORDS.get(wid, {}).get('name', wid)}: {risk_level}风险({risk_score}) - {notes}")
 
-        data["security"] = security
-        data["traffic"] = traffic
-        data["geopolitics"] = geopolitics
+    else:
+        # ── Gemini 失败：fallback 到静态规则更新（确保数据不过时）──
+        print("  ⚠️  Gemini 不可用，使用静态规则更新 security/traffic/geopolitics...")
+        STATIC_RISK = {
+            "ormuz":     ("高",  72, "约20%全球石油过境，地区紧张局势持续监控"),
+            "mandeb":    ("高",  78, "胡塞武装活动区域，建议申请军事护航"),
+            "malacca":   ("中",  42, "全球最繁忙海峡，ReCAAP偶发登船事件"),
+            "suez":      ("中",  50, "红海局势持续影响，通航量约40-60%"),
+            "turkish":   ("低",  30, "蒙特勒公约规定，商船须提前报告"),
+            "panama":    ("低",  18, "降雨恢复，通航量已回升正常水平"),
+            "cape":      ("低",  22, "红海替代绕行路线，通过量高于正常"),
+            "denmark":   ("低",  12, "冬季偶有浮冰，夏季通行条件良好"),
+            "gibraltar": ("低",  18, "地中海-大西洋要道，通行顺畅"),
+            "lombok":    ("低",  22, "超大型船舶偏好路线，通行正常"),
+        }
+        STATIC_TRAFFIC = {
+            "ormuz":     ("受监控通行",   "约18-22艘大型油轮",  "2-6"),
+            "mandeb":    ("军事护航通行", "约18艘",            "不确定"),
+            "malacca":   ("正常",        "约190艘",           "1-2"),
+            "suez":      ("受限通航",     "约35-50艘",         "2-4"),
+            "turkish":   ("正常",        "约130艘",           "2-4"),
+            "panama":    ("正常",        "约36艘",            "1-2"),
+            "cape":      ("繁忙",        "约100艘",           "1"),
+            "denmark":   ("正常",        "约15艘",            "1"),
+            "gibraltar": ("繁忙",        "约290艘",           "1-2"),
+            "lombok":    ("正常",        "约22艘",            "1"),
+        }
+        STATIC_GEO = {
+            "ormuz":     ("高度关注", "约20%全球石油过境，建议商船登记UKMTO"),
+            "mandeb":    ("高度关注", "建议联系护航协调机构（Aspides/Prosperity Guardian）"),
+            "malacca":   ("适度关注", "保持常规警惕，24小时船桥瞭望"),
+            "suez":      ("适度关注", "红海局势持续影响，请确认最新通行建议"),
+            "turkish":   ("适度关注", "蒙特勒公约规定，战舰通行限制"),
+            "panama":    ("稳定",     "正常通行"),
+            "cape":      ("稳定",     "正常通行，注意大浪天气"),
+            "denmark":   ("稳定",     "注意浮冰季节"),
+            "gibraltar": ("稳定",     "正常通行"),
+            "lombok":    ("稳定",     "正常通行"),
+        }
+        for wid in WATERWAY_COORDS:
+            risk_level, risk_score, notes = STATIC_RISK.get(wid, ("低", 20, "正常通航"))
+            q_status, daily, wait = STATIC_TRAFFIC.get(wid, ("正常", "约30艘", "2"))
+            geo_status, geo_detail = STATIC_GEO.get(wid, ("稳定", "正常通行"))
+
+            # security
+            if wid not in security:
+                security[wid] = {}
+            security[wid].update({
+                "risk_level": risk_level,
+                "risk_score": risk_score,
+                "status": "高度关注" if risk_level == "高" else ("适度关注" if risk_level == "中" else "正常通航"),
+                "status_icon": "⚠️" if risk_level in ("高", "中") else "✅",
+                "last_incident": today_str,
+                "updated": now_iso,
+            })
+            if "alerts" not in security[wid]:
+                security[wid]["alerts"] = []
+
+            # traffic
+            if wid not in traffic:
+                traffic[wid] = {}
+            traffic[wid].update({
+                "daily_transit": daily,
+                "avg_wait_time": wait + "小时",
+                "queue_status": q_status,
+                "queue_icon": "🔴" if risk_level == "高" else ("🟡" if risk_level == "中" else "🟢"),
+                "congestion_level": risk_level,
+                "notes": notes,
+                "updated": datetime.utcnow().isoformat() + 'Z',
+                "data_source": "静态规则 (Gemini 不可用时 fallback)",
+            })
+            if "waiting_ships" not in traffic[wid]:
+                traffic[wid]["waiting_ships"] = 0
+
+            # geopolitics
+            geopolitics[wid] = {
+                "status": geo_status,
+                "detail": geo_detail,
+                "last_review": today_str,
+                "advisory_level": risk_level
+            }
+            print(f"  📋 {WATERWAY_COORDS.get(wid, {}).get('name', wid)}: {risk_level}风险({risk_score})")
+
+    data["security"] = security
+    data["traffic"] = traffic
+    data["geopolitics"] = geopolitics
 
     # 3. 更新时间戳
     data["last_updated"] = ts_beijing.isoformat()
