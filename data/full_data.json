@@ -1,6 +1,6 @@
 {
   "version": "5.0",
-  "data_date": "2026-04-30",
+  "data_date": "2026-05-01",
   "waterways": [
     {
       "id": "ormuz",
@@ -239,51 +239,51 @@
   ],
   "weather": {
     "ormuz": {
-      "temperature": "29°C",
-      "feels_like": "30°C",
-      "wind": "24 km/h 西南",
-      "wave_height": "0.6m",
-      "wave_period": "3s",
-      "sea_temp": "27°C",
-      "visibility": "10 km",
-      "condition": "阴天",
-      "condition_icon": "☁️",
-      "humidity": "61%",
-      "updated": "2026-04-30T12:01:53.262578Z",
-      "data_source": "Open-Meteo API v2 + Marine API"
-    },
-    "malacca": {
-      "temperature": "26°C",
-      "feels_like": "33°C",
-      "wind": "0 km/h 西",
-      "wave_height": "N/A",
-      "wave_period": "N/A",
-      "sea_temp": "27°C",
-      "visibility": "10 km",
-      "condition": "小雨",
-      "condition_icon": "🌧️",
-      "humidity": "97%",
-      "updated": "2026-04-30T12:01:55.791484Z",
-      "data_source": "Open-Meteo API v2 + Marine API"
-    },
-    "suez": {
-      "temperature": "26°C",
-      "feels_like": "25°C",
-      "wind": "11 km/h 西北",
-      "wave_height": "N/A",
-      "wave_period": "N/A",
-      "sea_temp": "19°C",
+      "temperature": "27°C",
+      "feels_like": "29°C",
+      "wind": "25 km/h 西南",
+      "wave_height": "0.9m",
+      "wave_period": "4s",
+      "sea_temp": "26°C",
       "visibility": "10 km",
       "condition": "晴朗",
       "condition_icon": "☀️",
-      "humidity": "25%",
-      "updated": "2026-04-30T12:01:58.608361Z",
+      "humidity": "74%",
+      "updated": "2026-05-01T06:25:18.583131Z",
+      "data_source": "Open-Meteo API v2 + Marine API"
+    },
+    "malacca": {
+      "temperature": "30°C",
+      "feels_like": "36°C",
+      "wind": "5 km/h 南",
+      "wave_height": "N/A",
+      "wave_period": "N/A",
+      "sea_temp": "29°C",
+      "visibility": "10 km",
+      "condition": "阴天",
+      "condition_icon": "☁️",
+      "humidity": "72%",
+      "updated": "2026-05-01T06:25:20.657045Z",
+      "data_source": "Open-Meteo API v2 + Marine API"
+    },
+    "suez": {
+      "temperature": "19°C",
+      "feels_like": "18°C",
+      "wind": "5 km/h 北",
+      "wave_height": "N/A",
+      "wave_period": "N/A",
+      "sea_temp": "20°C",
+      "visibility": "10 km",
+      "condition": "晴朗",
+      "condition_icon": "☀️",
+      "humidity": "56%",
+      "updated": "2026-05-01T06:25:22.979098Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "panama": {
       "temperature": "23°C",
-      "feels_like": "28°C",
-      "wind": "8 km/h 西北",
+      "feels_like": "29°C",
+      "wind": "4 km/h 西北",
       "wave_height": "N/A",
       "wave_period": "N/A",
       "sea_temp": "26°C",
@@ -291,91 +291,91 @@
       "condition": "阴天",
       "condition_icon": "☁️",
       "humidity": "99%",
-      "updated": "2026-04-30T12:02:01.390787Z",
+      "updated": "2026-05-01T06:25:25.395844Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "mandeb": {
-      "temperature": "33°C",
-      "feels_like": "35°C",
-      "wind": "23 km/h 北",
-      "wave_height": "0.4m",
+      "temperature": "31°C",
+      "feels_like": "36°C",
+      "wind": "10 km/h 东北",
+      "wave_height": "0.3m",
       "wave_period": "3s",
       "sea_temp": "29°C",
       "visibility": "10 km",
-      "condition": "晴朗",
-      "condition_icon": "☀️",
-      "humidity": "53%",
-      "updated": "2026-04-30T12:02:03.844411Z",
+      "condition": "雷暴",
+      "condition_icon": "⛈️",
+      "humidity": "70%",
+      "updated": "2026-05-01T06:25:34.220388Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "cape": {
-      "temperature": "17°C",
-      "feels_like": "14°C",
-      "wind": "19 km/h 南",
-      "wave_height": "2.3m",
+      "temperature": "15°C",
+      "feels_like": "10°C",
+      "wind": "37 km/h 北",
+      "wave_height": "2.7m",
       "wave_period": "10s",
-      "sea_temp": "18°C",
-      "visibility": "10 km",
-      "condition": "阴天",
-      "condition_icon": "☁️",
-      "humidity": "69%",
-      "updated": "2026-04-30T12:02:06.375749Z",
-      "data_source": "Open-Meteo API v2 + Marine API"
-    },
-    "turkish": {
-      "temperature": "13°C",
-      "feels_like": "9°C",
-      "wind": "17 km/h 东北",
-      "wave_height": "0.8m",
-      "wave_period": "4s",
-      "sea_temp": "11°C",
-      "visibility": "10 km",
-      "condition": "阴天",
-      "condition_icon": "☁️",
-      "humidity": "65%",
-      "updated": "2026-04-30T12:02:14.524949Z",
-      "data_source": "Open-Meteo API v2 + Marine API"
-    },
-    "denmark": {
-      "temperature": "0°C",
-      "feels_like": "-8°C",
-      "wind": "37 km/h 西南",
-      "wave_height": "N/A",
-      "wave_period": "N/A",
-      "sea_temp": "0°C",
+      "sea_temp": "17°C",
       "visibility": "10 km",
       "condition": "阴天",
       "condition_icon": "☁️",
       "humidity": "80%",
-      "updated": "2026-04-30T12:02:16.870654Z",
+      "updated": "2026-05-01T06:25:36.302625Z",
+      "data_source": "Open-Meteo API v2 + Marine API"
+    },
+    "turkish": {
+      "temperature": "8°C",
+      "feels_like": "5°C",
+      "wind": "17 km/h 东北",
+      "wave_height": "1.9m",
+      "wave_period": "5s",
+      "sea_temp": "11°C",
+      "visibility": "10 km",
+      "condition": "小雨",
+      "condition_icon": "🌧️",
+      "humidity": "88%",
+      "updated": "2026-05-01T06:25:38.596762Z",
+      "data_source": "Open-Meteo API v2 + Marine API"
+    },
+    "denmark": {
+      "temperature": "-5°C",
+      "feels_like": "-12°C",
+      "wind": "22 km/h 西",
+      "wave_height": "N/A",
+      "wave_period": "N/A",
+      "sea_temp": "N/A",
+      "visibility": "10 km",
+      "condition": "晴间多云",
+      "condition_icon": "🌤️",
+      "humidity": "84%",
+      "updated": "2026-05-01T06:25:40.937204Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "gibraltar": {
-      "temperature": "18°C",
-      "feels_like": "19°C",
-      "wind": "3 km/h 东南",
-      "wave_height": "0.3m",
+      "temperature": "12°C",
+      "feels_like": "10°C",
+      "wind": "7 km/h 西",
+      "wave_height": "0.2m",
       "wave_period": "6s",
-      "sea_temp": "14°C",
+      "sea_temp": "15°C",
       "visibility": "10 km",
       "condition": "阴天",
       "condition_icon": "☁️",
-      "humidity": "67%",
-      "updated": "2026-04-30T12:02:25.287772Z",
+      "humidity": "65%",
+      "updated": "2026-05-01T06:25:44.567516Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "lombok": {
-      "temperature": "27°C",
-      "feels_like": "33°C",
-      "wind": "2 km/h 西南",
-      "wave_height": "1.3m",
+      "temperature": "26°C",
+      "feels_like": "29°C",
+      "wind": "21 km/h 南",
+      "wave_height": "1.4m",
       "wave_period": "13s",
       "sea_temp": "30°C",
       "visibility": "10 km",
       "condition": "小雨",
       "condition_icon": "🌧️",
-      "humidity": "80%",
-      "updated": "2026-04-30T12:02:28.626797Z",
+      "humidity": "85%",
+      "updated": "2026-05-01T06:25:46.979225Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     }
   },
@@ -383,29 +383,29 @@
     "ormuz": {
       "risk_level": "极高",
       "risk_score": 93,
-      "status": "实质封锁",
+      "status": "选择性通行（IRGC管控）",
       "alerts": [
         {
-          "type": "地缘政治封锁",
+          "type": "选择性封锁",
           "severity": "极高",
           "location": "霍尔木兹海峡全域",
-          "time": "2026-04-22 CNBC报道",
-          "detail": "特朗普宣布美伊停火延长，但伊朗拒绝全面开放海峡，继续控制船只通行并扣押部分油轮。Maersk对恢复通行持谨慎态度，未宣布全面复航。全球20%石油、30%+ LNG运输持续受阻。"
+          "time": "2026-04-29 Windward数据",
+          "detail": "IRGC实施选择性通行制度，按船旗国、货物目的地、外交谈判结果决定是否放行。4月29日通行量20次（6进14出），较正常153艘/日下降约95%。南方航道 usage 创历史新高（35%）。"
         },
         {
-          "type": "航行管控",
+          "type": "保险撤保",
           "severity": "高",
           "location": "波斯湾/霍尔木兹海峡",
-          "time": "2026年2月至今",
-          "detail": "IRGC许可通行制度仍在执行，商业通行船只极少。P&I保险全面撤保，战争险附加费持续高位。"
+          "time": "2026年3月5日至今",
+          "detail": "战争险全面取消，P&I保险撤保。经济性封锁持续，主要国际船公司（Maersk、MSC、赫伯罗特、达飞）仍暂停通行。影子船队活跃（2,108艘中65.5%受制裁）。"
         }
       ],
       "status_icon": "🔴",
-      "live_vessels_today": null,
+      "live_vessels_today": 902,
       "days_closed": null,
-      "data_source": "HormuzTracker (live)",
-      "last_incident": "2026-04-30",
-      "updated": "2026-04-30T12:02:28.626848+00:00"
+      "data_source": "HormuzMonitor + Windward + 信德海事网",
+      "last_incident": "2026-05-01",
+      "updated": "2026-05-01T14:33:40+08:00"
     },
     "malacca": {
       "risk_level": "中",
@@ -421,8 +421,8 @@
         }
       ],
       "status_icon": "🟡",
-      "last_incident": "2026-04-30",
-      "updated": "2026-04-30T12:02:28.626848+00:00"
+      "last_incident": "2026-05-01",
+      "updated": "2026-05-01T06:25:46.979293+00:00"
     },
     "suez": {
       "risk_level": "高",
@@ -438,25 +438,25 @@
         }
       ],
       "status_icon": "🟠",
-      "last_incident": "2026-04-30",
-      "updated": "2026-04-30T12:02:28.626848+00:00"
+      "last_incident": "2026-05-01",
+      "updated": "2026-05-01T06:25:46.979293+00:00"
     },
     "panama": {
       "risk_level": "中",
-      "risk_score": 45,
-      "status": "拥堵通行",
+      "risk_score": 38,
+      "status": "高位运行（稳定）",
       "alerts": [
         {
-          "type": "交通拥堵",
+          "type": "交通高位运行",
           "severity": "中",
           "location": "巴拿马运河",
-          "time": "2026-04-17 Gulf News报道",
-          "detail": "霍尔木兹危机导致全球能源路线重构，油轮交通激增。等待时间达3.5天。有船只支付400万美元优先通行费。运河基础设施正常运转，但通过量远超设计容量。"
+          "time": "2026-04-24 ACP官方声明",
+          "detail": "霍尔木兹危机驱动全球油轮绕航，巴拿马运河交通量同比+3.7%。ACP 2026-04-23/24明确表示\"开放且可靠\"、无系统性拥堵。日均36-38艘，峰值40艘+。加通湖水位充足，无吃水限制。4月16日LPG船竞拍溢价创400万美元记录，属临时需求峰值。"
         }
       ],
       "status_icon": "🟡",
-      "last_incident": "2026-04-30",
-      "updated": "2026-04-30T12:02:28.626848+00:00"
+      "last_incident": "2026-05-01",
+      "updated": "2026-05-01T06:25:46.979293+00:00"
     },
     "mandeb": {
       "risk_level": "极高",
@@ -472,8 +472,8 @@
         }
       ],
       "status_icon": "🔴",
-      "last_incident": "2026-04-30",
-      "updated": "2026-04-30T12:02:28.626848+00:00"
+      "last_incident": "2026-05-01",
+      "updated": "2026-05-01T06:25:46.979293+00:00"
     },
     "cape": {
       "risk_level": "低",
@@ -481,8 +481,8 @@
       "status": "正常通航（替代路线）",
       "alerts": [],
       "status_icon": "🟢",
-      "last_incident": "2026-04-30",
-      "updated": "2026-04-30T12:02:28.626848+00:00"
+      "last_incident": "2026-05-01",
+      "updated": "2026-05-01T06:25:46.979293+00:00"
     },
     "turkish": {
       "risk_level": "低",
@@ -498,8 +498,8 @@
         }
       ],
       "status_icon": "🟢",
-      "last_incident": "2026-04-30",
-      "updated": "2026-04-30T12:02:28.626848+00:00"
+      "last_incident": "2026-05-01",
+      "updated": "2026-05-01T06:25:46.979293+00:00"
     },
     "denmark": {
       "risk_level": "低",
@@ -507,8 +507,8 @@
       "status": "正常通航",
       "alerts": [],
       "status_icon": "🟢",
-      "last_incident": "2026-04-30",
-      "updated": "2026-04-30T12:02:28.626848+00:00"
+      "last_incident": "2026-05-01",
+      "updated": "2026-05-01T06:25:46.979293+00:00"
     },
     "gibraltar": {
       "risk_level": "低",
@@ -516,8 +516,8 @@
       "status": "正常通航",
       "alerts": [],
       "status_icon": "🟢",
-      "last_incident": "2026-04-30",
-      "updated": "2026-04-30T12:02:28.626848+00:00"
+      "last_incident": "2026-05-01",
+      "updated": "2026-05-01T06:25:46.979293+00:00"
     },
     "lombok": {
       "risk_level": "低",
@@ -525,23 +525,23 @@
       "status": "正常通航（替代路线）",
       "alerts": [],
       "status_icon": "🟢",
-      "last_incident": "2026-04-30",
-      "updated": "2026-04-30T12:02:28.626848+00:00"
+      "last_incident": "2026-05-01",
+      "updated": "2026-05-01T06:25:46.979293+00:00"
     }
   },
   "traffic": {
     "ormuz": {
-      "status": "实质封锁（有限通行）",
-      "wait_hours": "不定",
-      "daily_transit": "极少（美伊停火谈判中，伊朗仍控制通行）",
-      "queue_status": "实质封锁（有限通行）",
+      "status": "选择性通行（IRGC管控）",
+      "wait_hours": "不定（IRGC逐案审批）",
+      "daily_transit": "约20艘（正常约153艘，下降约95%；Windward 2026-04-29）",
+      "queue_status": "选择性通行（IRGC管控）",
       "queue_icon": "🔴",
       "congestion_level": "极高",
       "risk_score": 93,
-      "notes": "【霍尔木兹海峡·2026-04-24】特朗普宣布美伊停火延长，但伊朗仍未全面开放海峡，继续控制船只通行并扣押部分油轮（CNBC 4月22日报道）。Maersk采取谨慎态度，未全面恢复通行。IRGC许可制度仍在执行。全球约20%石油、30%+ LNG运输受阻，石油市场持续紧张。",
-      "alternative": "所有船只绕行好望角（+10-14天航程）",
-      "updated": "2026-04-30T12:02:37.296928Z",
-      "data_source": "手动更新 2026-04-20"
+      "notes": "【霍尔木兹海峡·2026-04-29】IRGC实施选择性通行制度，按船旗国、货物目的地、外交谈判决定是否放行。4月29日通行量20次过境（6进14出），较正常153艘/日下降约95%。南方航道占比35%创历史新高。海湾内在航船舶902艘。全球约20%石油、20% LNG运输受阻。主要国际船公司（Maersk、MSC、赫伯罗特、达飞）仍暂停通行。",
+      "alternative": "所有非批准船只绕行好望角（+10-14天航程）",
+      "updated": "2026-05-01T14:33:40+08:00",
+      "data_source": "HormuzMonitor + Windward 2026-04-29"
     },
     "malacca": {
       "status": "繁忙通行",
@@ -553,34 +553,34 @@
       "risk_score": 38,
       "notes": "【马六甲海峡·2026-04-24】作为霍尔木兹危机的核心替代路线，通过量持续高于历史均值。ReCAAP报告偶发登船事件，须保持24小时船桥瞭望。",
       "alternative": "",
-      "updated": "2026-04-30T12:02:37.296959Z",
+      "updated": "2026-05-01T06:26:01.085821Z",
       "data_source": "ReCAAP / Maritime News"
     },
     "suez": {
       "status": "严重受限",
       "wait_hours": "不定（船只主动绕行）",
-      "daily_transit": "约15-20艘（正常约64艘，下降约75%）",
+      "daily_transit": "约30-35艘（正常约70艘，下降约50%；Maritime News 2026-03-29）",
       "queue_status": "严重受限",
       "queue_icon": "🔴",
       "congestion_level": "高",
       "risk_score": 75,
-      "notes": "【苏伊士运河·2026-04-22更新】TASK/project44数据：全球集装箱运输量下降75%。苏伊士运河技术上仍开放，但胡塞持续威胁令绝大多数船公司拒绝通行。Maersk、MSC、赫伯罗特等主要船公司维持绕行政策。亚洲-美国东海岸航程延长约47%（+12天），每航次燃油成本增约20万美元。",
+      "notes": "【苏伊士运河·2026-03-29更新】Maritime News数据：红海通行量下降约50%，日均约30-35艘（正常约70艘）。苏伊士运河技术上仍开放，但胡塞持续威胁令绝大多数船公司拒绝通行。Maersk、MSC、赫伯罗特等主要船公司维持绕行政策。亚洲-美国东海岸航程延长约47%（+12天），每航次燃油成本增约20万美元。",
       "alternative": "亚欧/亚美航线改道好望角（+10-14天，+$2000-4000/TEU附加费）",
-      "updated": "2026-04-30T12:02:37.296971Z",
-      "data_source": "TASK/project44 2026-04-22 + CNBC"
+      "updated": "2026-05-01T06:26:01.085828Z",
+      "data_source": "Maritime News 2026-03-29 (Red Sea traffic halved)"
     },
     "panama": {
-      "status": "拥堵通行",
-      "wait_hours": "约3-5天",
-      "daily_transit": "约50-60艘（霍尔木兹危机导致油轮改道激增）",
-      "queue_status": "拥堵通行",
+      "status": "高位运行（稳定）",
+      "wait_hours": "1-2（预约船无额外等待，未预约参与竞拍）",
+      "daily_transit": "约36-38艘（FY2026 H1同比+3.7%，运河管理局称运营稳定）",
+      "queue_status": "高位运行（稳定）",
       "queue_icon": "🟠",
       "congestion_level": "中",
-      "risk_score": 45,
-      "notes": "【巴拿马运河·2026-04-17更新】Gulf News报道：伊朗战争引发全球能源路线转移，巴拿马运河油轮交通激增，等待时间达3.5天。有船只支付高达400万美元插队优先通行费。FY2026前半段（2025年10月-2026年3月）通航量同比上升224艘至6288艘次，货物量达2.54亿短吨。运河基础设施运转正常，但需求远超设计通过能力。",
+      "risk_score": 38,
+      "notes": "【巴拿马运河·2026-04-24更新】ACP官方称运河\"开放且可靠\"，否认存在系统性拥堵。日均通行36-38艘（峰值40艘+）。中东局势驱动绕航需求，4月11-16日同比+3.7%。加通湖水位因旱季强降雨处于最高位，无吃水限制。4月16日LPG船支付创纪录400万美元竞拍溢价，但管理局称此为临时需求峰值，不影响整体通行秩序。",
       "alternative": "",
-      "updated": "2026-04-30T12:02:37.296981Z",
-      "data_source": "Gulf News 2026-04-17 + Panama Canal Authority FY2026 H1"
+      "updated": "2026-05-01T06:26:01.085834Z",
+      "data_source": "ACP官方声明 2026-04-23 + Maritime News 2026-04-25"
     },
     "mandeb": {
       "status": "功能性关闭",
@@ -592,7 +592,7 @@
       "risk_score": 90,
       "notes": "【曼德海峡·2026-04-22更新】胡塞武装4月继续发动导弹和无人机袭击，Aspides多国护航行动实质暂停。TASK/project44数据：苏伊士运河集装箱运输量较正常水平下降75%。亚欧航线被迫绕行好望角，亚洲-美国东海岸运输时间增加47%。",
       "alternative": "所有船只绕行好望角",
-      "updated": "2026-04-30T12:02:37.296990Z",
+      "updated": "2026-05-01T06:26:01.085839Z",
       "data_source": "TASK 2026-04-22 + Maritime News"
     },
     "cape": {
@@ -605,7 +605,7 @@
       "risk_score": 15,
       "notes": "【好望角·2026-04-24替代路线】霍尔木兹封锁+红海危机双重重压下，好望角已成为全球最重要替代航行路线，日均通过量翻2倍以上。TASK报告：亚洲-美国东海岸航程+47%（额外约12天）。开普敦港务局：港口设施正常运转，燃油补给需求激增。",
       "alternative": "",
-      "updated": "2026-04-30T12:02:37.297000Z",
+      "updated": "2026-05-01T06:26:01.085844Z",
       "data_source": "Maritime News / SeaRates"
     },
     "turkish": {
@@ -618,7 +618,7 @@
       "risk_score": 28,
       "notes": "博斯普鲁斯海峡通行规则正常，蒙特勒公约依然有效。高峰期等待时间较长，商船须提前24-48小时向交管中心报告。",
       "alternative": "",
-      "updated": "2026-04-30T12:02:37.297009Z",
+      "updated": "2026-05-01T06:26:01.085858Z",
       "data_source": "土耳其海峡船舶交管系统（常规数据）"
     },
     "denmark": {
@@ -631,7 +631,7 @@
       "risk_score": 12,
       "notes": "丹麦海峡交通正常。春季浮冰已融化，通行条件良好。北大西洋航线稳定。",
       "alternative": "",
-      "updated": "2026-04-30T12:02:37.297018Z",
+      "updated": "2026-05-01T06:26:01.085862Z",
       "data_source": "冰岛海岸警卫队（常规数据）"
     },
     "gibraltar": {
@@ -644,7 +644,7 @@
       "risk_score": 18,
       "notes": "地中海-大西洋唯一咽喉，交通繁忙。每年约10万艘船舶通行，为全球最繁忙海峡之一。分道通航制严格遵守，港口拥挤时段略有等待。",
       "alternative": "",
-      "updated": "2026-04-30T12:02:37.297027Z",
+      "updated": "2026-05-01T06:26:01.085866Z",
       "data_source": "直布罗陀港务局（常规数据）"
     },
     "lombok": {
@@ -657,15 +657,15 @@
       "risk_score": 22,
       "notes": "马六甲替代路线，超大型船舶（VLCC/ULCC）偏好。作为好望角绕行方案的一部分，通过量有所增加。",
       "alternative": "",
-      "updated": "2026-04-30T12:02:37.297035Z",
+      "updated": "2026-05-01T06:26:01.085871Z",
       "data_source": "印尼海事局（常规数据）"
     }
   },
   "geopolitics": {
     "ormuz": {
-      "status": "极度风险·实质封锁",
-      "detail": "强烈建议绕行（停火谈判中，通行仍受限）",
-      "last_review": "2026-04-20",
+      "status": "极度风险·选择性通行",
+      "detail": "强烈建议绕行（IRGC按船旗国/货物选择性放行，未获批船舶禁止通行）",
+      "last_review": "2026-05-01",
       "advisory_level": "极高"
     },
     "malacca": {
@@ -681,8 +681,8 @@
       "advisory_level": "高"
     },
     "panama": {
-      "status": "中风险·拥堵",
-      "detail": "可通行（建议提前安排，等待3-5天）",
+      "status": "中风险·高位运行",
+      "detail": "可通行（运河运营稳定，预约船无额外等待）",
       "last_review": "2026-04-20",
       "advisory_level": "中"
     },
@@ -730,15 +730,15 @@
     "data_quality": {
       "hormuz": {
         "quality": "high",
-        "latest_date": "2026-04-22",
-        "source": "CNBC 2026-04-22 + Maersk Advisory 2026-04-22",
-        "note": "霍尔木兹海峡：特朗普停火延长但伊朗仍控制通行，Maersk持谨慎态度"
+        "latest_date": "2026-04-29",
+        "source": "HormuzMonitor + Windward 2026-04-29 + 信德海事网 2026-04-28",
+        "note": "霍尔木兹海峡：IRGC选择性通行，4月29日20次过境（正常153艘/日，下降95%）；南方航道占比35%创新高"
       },
       "suez": {
         "quality": "high",
-        "latest_date": "2026-04-22",
-        "source": "TASK/project44 2026-04-22 + CNBC",
-        "note": "苏伊士运河集装箱运输量下降75%（TASK/project44数据），亚欧航线运输时间+47%"
+        "latest_date": "2026-03-29",
+        "source": "Maritime News 2026-03-29 (Red Sea traffic halved)",
+        "note": "苏伊士运河红海通行量下降约50%，日均30-35艘（正常约70艘），主要承运商维持绕行"
       },
       "mandeb": {
         "quality": "high",
@@ -748,9 +748,9 @@
       },
       "panama": {
         "quality": "high",
-        "latest_date": "2026-04-17",
-        "source": "Gulf News 2026-04-17 + Panama Canal Authority FY2026 H1",
-        "note": "Gulf News：等待时间3.5天，油轮交通激增，有船只付400万美元插队。FY2026 H1通航6288艘次（+224同比）"
+        "latest_date": "2026-04-24",
+        "source": "ACP官方声明 2026-04-23 + Maritime News 2026-04-25",
+        "note": "ACP称\"开放且可靠\"无系统性拥堵；日均36-38艘同比+3.7%；4月16日LPG船创400万美元竞拍记录"
       },
       "cape": {
         "quality": "medium",
@@ -800,20 +800,20 @@
       "订阅 Suez Canal Authority 官方每日公报"
     ]
   },
-  "last_updated": "2026-04-30T20:02:37.297193+08:00",
-  "next_update": "2026-05-01T02:02:37.297207+08:00",
+  "last_updated": "2026-05-01T14:26:01.085989+08:00",
+  "next_update": "2026-05-01T20:26:01.085997+08:00",
   "data_sources": {
     "weather": "Open-Meteo API v2 (https://open-meteo.com) - 真实实时海象",
-    "traffic": "CNBC 2026-04-22 + TASK/project44 2026-04-22 + Gulf News 2026-04-17 + Panama Canal Authority",
+    "traffic": "CNBC 2026-04-22 + TASK/project44 2026-04-22 + Gulf News 2026-04-17 + Panama Canal Authority + HormuzMonitor + Windward 2026-04-29",
     "security": "CNBC + HormuzTracker.com + Maritime News + IMB + UKMTO (实时更新)",
     "vessels": "AISHub (需注册付费) - 当前使用新闻估算"
   },
   "key_highlights": [
-    "🔴 霍尔木兹海峡: 实质封锁（美伊停火谈判中，伊朗仍控制通行），Maersk持谨慎态度",
-    "🟠 苏伊士运河: 严重受限，集装箱运输量下降75%（TASK/project44），胡塞持续威胁",
-    "🔴 曼德海峡: 功能性关闭，胡塞4月继续发动导弹袭击",
-    "🟠 巴拿马运河: 拥堵通行，等待3.5天，油轮交通激增，有船只付400万美元插队",
-    "🟢 好望角: 极度繁忙，日均120-150艘（+2.5倍），亚洲-美东航程+47%"
+    "🔴 霍尔木兹海峡: 选择性通行（IRGC管控，4月29日约20艘/日，下降约95%；南方航道占比35%创历史新高）",
+    "🟠 苏伊士运河: 严重受限，红海通行量下降约50%（日均30-35艘，正常约70艘），主要承运商维持绕行",
+    "🔴 曼德海峡: 功能性关闭，胡塞持续威胁，Aspides护航行动实质暂停",
+    "🟡 巴拿马运河: 高位运行（稳定），运河管理局否认系统性拥堵，日均36-38艘同比+3.7%",
+    "🟢 好望角: 极度繁忙，日均120-150艘（+2.5倍），全球最重要替代航线"
   ],
-  "disclaimer": "⚠️ 本平台数据仅供参考，实际航行决策请以船公司及官方机构建议为准。2026年4月中东局势剧变，建议实时关注UKMTO.org及Maritime News。"
+  "disclaimer": "⚠️ 本平台数据仅供参考，实际航行决策请以船公司及官方机构建议为准。2026年中东局势持续紧张，建议实时关注UKMTO.org及Maritime News。"
 }
