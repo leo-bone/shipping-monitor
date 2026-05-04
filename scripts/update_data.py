@@ -1,16 +1,29 @@
 #!/usr/bin/env python3
 """
-全球关键水道数据抓取脚本 v5.1
+全球关键水道数据抓取脚本 v6.0
 
-v5.1 (2026-04-24) 数据大更新：
-- 接入 CNBC(2026-04-22) + TASK/project44(2026-04-22) + Gulf News(2026-04-17) 最新真实数据
-- 霍尔木兹海峡: 美伊停火延长但伊朗仍实质控制通行，Maersk持谨慎态度
-- 苏伊士运河: 集装箱运输量-75%（TASK数据），亚欧航线运输时间+47%
-- 曼德海峡: 胡塞4月继续导弹袭击，功能性关闭
-- 巴拿马运河: 拥堵通行等待3.5天，油轮激增，有船只付400万美元插队
-- 好望角: 日均120-150艘（+2.5倍），全球最重要替代路线
-- data_date 动态化（每次运行自动更新为当天）
+v6.0 (2026-05-04) 重大数据更新：
+- 霍尔木兹海峡: 美国5月4日启动"Project Freedom"(1.5万兵力+100+战机)恢复通航，
+  伊朗警告将攻击进入海峡的外国军事力量。Windward数据：日均13艘通过，
+  ~800艘商船困于波斯湾。商业信心极低，船东/保险商仍观望。
+- 苏伊士运河: 4月26日报告复苏中。CMA CGM和Maersk宣布回归计划，
+  MSC Euribia 4月26日完成北向通过。EU延长Aspides护航至2026年2月。
+  整体仍低于危机前水平，大部分承运商未定。
+- 曼德海峡: 胡塞已加入伊朗对美战争，多次发射导弹和无人机。
+  威胁关闭但未完全实现。EU Red Sea task force保持戒备。
+- 巴拿马运河: 日均38-40艘(正常36艘)，运营在105-111%容量。
+  竞拍溢价超400万美元（正常30-40万），确认拥堵。
+  FY2026 H1完成6288次通过，LNG/LPG绕航驱动需求。
+- 好望角: 3月报告112%船舶增长。已成为"全球商业前线航线"，
+  航程延长最多2周，物流成本增加30-50%。
+
+v5.1 (2026-04-24) 数据大更新记录保留。
 - 天气数据: Open-Meteo v2 + Marine API 实时获取
+- data_date 动态化（每次运行自动更新为当天）
+
+⚠️ 注意：本脚本中的交通/安全/地缘数据为硬编码快照。
+   需定期手动搜索最新新闻并更新下方字典。
+   天气数据是唯一实时自动获取的部分。
 """
 
 import json
@@ -66,34 +79,34 @@ WEATHER_CODES = {
 # ==================== 数据新鲜度配置 ====================
 DATA_SOURCES_VERSION = {
     "hormuz": {
-        "latest_date": "2026-04-22",
-        "source": "CNBC 2026-04-22 + Maersk Advisory 2026-04-22",
+        "latest_date": "2026-05-04",
+        "source": "Windward MIOC 2026-05-04 + CENTCOM Project Freedom 2026-05-04 + The National 2026-05-04",
         "quality": "high",
-        "note": "霍尔木兹海峡：特朗普停火延长但伊朗仍控制通行，Maersk持谨慎态度"
+        "note": "Project Freedom启动：1.5万兵力+100+战机；日均13艘通过；~800艘商船困于波斯湾"
     },
     "suez": {
-        "latest_date": "2026-03-29",
-        "source": "Maritime News 2026-03-29 (Red Sea traffic halved)",
+        "latest_date": "2026-04-26",
+        "source": "Maritime News 2026-04-26 (Suez Canal Operations Resume) + EU EUNAVFOR Aspides",
         "quality": "high",
-        "note": "苏伊士运河红海通行量下降约50%，日均30-35艘（正常约70艘），主要承运商维持绕行"
+        "note": "复苏中：CMA CGM和Maersk宣布回归计划；MSC Euribia 4月26日完成通过；整体仍低于危机前水平"
     },
     "mandeb": {
-        "latest_date": "2026-04-22",
-        "source": "TASK 2026-04-22 + Maritime News",
+        "latest_date": "2026-05-04",
+        "source": "France24 2026-03-30 + TWZ 2026-04-02 + BusinessToday 2026-03-15",
         "quality": "high",
-        "note": "胡塞武装4月继续发动导弹和无人机袭击，Aspides护航实质暂停"
+        "note": "胡塞已加入伊朗战争，威胁关闭但未完全实现；EU Red Sea task force保持戒备"
     },
     "panama": {
-        "latest_date": "2026-04-24",
-        "source": "ACP官方声明 2026-04-23 + Maritime News 2026-04-25",
+        "latest_date": "2026-05-02",
+        "source": "Maritime News 2026-05-02 + ACP官方 2026-04-23 + PanamaDaily 2026-04-23",
         "quality": "high",
-        "note": "ACP称\"开放且可靠\"无系统性拥堵；日均36-38艘同比+3.7%；4月16日LPG船创400万美元竞拍记录"
+        "note": "日均38-40艘(105-111%容量)；竞拍溢价超400万美元；FY2026 H1完成6288次通过"
     },
     "cape": {
-        "latest_date": "2026-04-20",
-        "source": "Maritime News / SeaRates",
+        "latest_date": "2026-05-02",
+        "source": "IOL 2026-03-11 (112% surge) + Zambian Observer 2026-05-02 + Maritime Hub 2026-04-08",
         "quality": "medium",
-        "note": "好望角作为替代路线日均100+艘，来源为航运新闻综合"
+        "note": "112%船舶增长(3月数据)；已成为全球主要航线；航程+2周，成本+30-50%"
     },
     "malacca": {
         "latest_date": "2026-04-20",
@@ -111,7 +124,7 @@ DATA_SOURCES_VERSION = {
         "latest_date": "2026-04-20",
         "source": "冰岛海岸警卫队（常规数据）",
         "quality": "medium",
-        "note": "丹麦海峡交通正常，冬季偶有浮冰"
+        "note": "丹麦海峡交通正常，春季通行条件良好"
     },
     "gibraltar": {
         "latest_date": "2026-04-20",
@@ -120,74 +133,93 @@ DATA_SOURCES_VERSION = {
         "note": "地中海-大西洋连接，每年约10万艘船舶通行"
     },
     "lombok": {
-        "latest_date": "2026-04-20",
-        "source": "印尼海事局（常规数据）",
+        "latest_date": "2026-05-03",
+        "source": "Windward MIOC 2026-05-03 (伊朗VLCC首次通过龙目海峡)",
         "quality": "medium",
-        "note": "马六甲替代路线，VLCC偏好路线"
+        "note": "马六甲替代路线，VLCC偏好；伊朗原油首次改道龙目海峡赴亚洲"
     },
 }
 
 
-# ==================== 2026年4月最新水道状态 ====================
-# 数据来源: CNBC(2026-04-22), TASK/project44(2026-04-22), Gulf News(2026-04-17), Panama Canal Authority
-# 更新日期: 2026-04-24（每次运行脚本时 data_date 字段自动更新）
+# ==================== 2026年5月最新水道状态 ====================
+# 数据来源: Windward MIOC(2026-05-04), CENTCOM(2026-05-04), Maritime News(2026-05-02/04-26),
+#           The National(2026-05-04), ACP(2026-04-23), IOL(2026-03-11), France24(2026-03-30)
+# 更新日期: 2026-05-04（每次运行脚本时 data_date 字段自动更新为当天）
 CURRENT_WATERWAY_STATUS = {
     "ormuz": {
-        "status": "实质封锁（有限通行）",
-        "wait_hours": "不定",
-        "daily_transit": "极少（美伊停火谈判中，伊朗仍控制通行）",
+        "status": "封锁中（Project Freedom启动）",
+        "wait_hours": "不定（Project Freedom提供有限护航）",
+        "daily_transit": "约13艘（Windward 2026-05-04数据，正常超100艘）",
         "level": "极高",
-        "risk_score": 93,
+        "risk_score": 95,
         "notes": (
-            "【霍尔木兹海峡·2026-04-24】特朗普宣布美伊停火延长，但伊朗仍未全面开放海峡，"
-            "继续控制船只通行并扣押部分油轮（CNBC 4月22日报道）。"
-            "Maersk采取谨慎态度，未全面恢复通行。IRGC许可制度仍在执行。"
-            "全球约20%石油、30%+ LNG运输受阻，石油市场持续紧张。"
+            "【霍尔木兹海峡·2026-05-04重大更新】"
+            "美国5月4日正式启动'Project Freedom'行动（CENTCOM），"
+            "部署1.5万名军人和100+架陆海基战机、导弹驱逐舰及无人系统，"
+            "旨在恢复海峡商业航行自由。"
+            "Windward MIOC数据：5月3日通过13艘（7进6出），其中2艘暗船；"
+            "~800艘商船困于波斯湾。"
+            "伊朗武装部队立即警告：任何外国军事力量进入海峡将被攻击。"
+            "伊朗称已迫使一艘美军舰艇在海峡入口折返。"
+            "Trump称此举为'人道主义'行动。"
+            "商业信心极低——船东和保险商仍观望，担心伊朗报复。"
+            "JMIC建议船只经阿曼水域'增强安全区域'绕行。"
+            "全球约20%石油、30%+ LNG运输持续受阻。"
         ),
         "alternative": "所有船只绕行好望角（+10-14天航程）"
     },
     "mandeb": {
-        "status": "功能性关闭",
-        "wait_hours": "不定（无护航可用）",
-        "daily_transit": "极少（仅军用船只）",
+        "status": "高度危险（胡塞加入伊朗战争）",
+        "wait_hours": "不定（护航有限）",
+        "daily_transit": "极少（商船基本绕行）",
         "level": "极高",
-        "risk_score": 90,
+        "risk_score": 88,
         "notes": (
-            "【曼德海峡·2026-04-22更新】胡塞武装4月继续发动导弹和无人机袭击，"
-            "Aspides多国护航行动实质暂停。"
-            "TASK/project44数据：苏伊士运河集装箱运输量较正常水平下降75%。"
-            "亚欧航线被迫绕行好望角，亚洲-美国东海岸运输时间增加47%。"
+            "【曼德海峡·2026-05-04更新】"
+            "胡塞武装已加入伊朗对美国/以色列战争，"
+            "多次发射弹道导弹和无人机袭击该区域。"
+            "伊朗推动胡塞准备封锁行动，但截至目前尚未完全实现。"
+            "EU延长Aspides红海护航任务至2026年2月（预算超1700万欧元）。"
+            "沙特通过红海替代石油运输路线也面临胡塞威胁。"
+            "绝大多数商船仍选择绕行好望角。"
         ),
         "alternative": "所有船只绕行好望角"
     },
     "suez": {
-        "status": "严重受限",
-        "wait_hours": "不定（船只主动绕行）",
-        "daily_transit": "约30-35艘（正常约70艘，下降约50%；Maritime News 2026-03-29）",
+        "status": "复苏中（大部分仍绕行）",
+        "wait_hours": "不定（逐步恢复中）",
+        "daily_transit": "逐步恢复中（远低于正常约70艘/日）",
         "level": "高",
-        "risk_score": 75,
+        "risk_score": 65,
         "notes": (
-            "【苏伊士运河·2026-03-29更新】Maritime News数据：红海通行量下降约50%，"
-            "日均约30-35艘（正常约70艘）。"
-            "苏伊士运河技术上仍开放，但胡塞持续威胁令绝大多数船公司拒绝通行。"
-            "Maersk、MSC、赫伯罗特等主要船公司维持绕行政策。"
-            "亚洲-美国东海岸航程延长约47%（+12天），每航次燃油成本增约20万美元。"
+            "【苏伊士运河·2026-05-04更新】"
+            "Maritime News 4月26日报道：苏伊士运河航运复苏正在进行中。"
+            "CMA CGM和Maersk已宣布回归苏伊士航线的正式计划。"
+            "MSC Euribia邮轮4月26日完成北向通过。"
+            "分析师预计承运商将在2026年春节后或10月黄金周逐步回归。"
+            "完全恢复将带来全球6%的船队运力回归苏伊士路线。"
+            "但整体流量仍大幅低于危机前水平，大部分承运商态度未定。"
+            "EU EUNAVFOR Aspides护航任务延长至2026年2月。"
         ),
-        "alternative": "亚欧/亚美航线改道好望角（+10-14天，+$2000-4000/TEU附加费）"
+        "alternative": "亚欧/亚美航线部分仍绕行好望角（+10-14天，+$2000-4000/TEU附加费）"
     },
     "panama": {
-        "status": "高位运行（稳定）",
-        "wait_hours": "1-2（预约船无额外等待，未预约参与竞拍）",
-        "daily_transit": "约36-38艘（FY2026 H1同比+3.7%，运河管理局称运营稳定）",
-        "level": "中",
-        "risk_score": 38,
+        "status": "严重拥堵（超负荷运行）",
+        "wait_hours": "竞拍等待（标准船$30-40万，溢价超$400万）",
+        "daily_transit": "约38-40艘（正常36艘，运营在105-111%容量）",
+        "level": "高",
+        "risk_score": 55,
         "notes": (
-            "【巴拿马运河·2026-04-24更新】ACP官方称运河\"开放且可靠\"，"
-            "否认存在系统性拥堵。日均通行36-38艘（峰值40艘+）。"
-            "中东局势驱动绕航需求，4月11-16日同比+3.7%。"
-            "加通湖水位因旱季强降雨处于最高位，无吃水限制。"
-            "4月16日LPG船支付创纪录400万美元竞拍溢价，"
-            "但管理局称此为临时需求峰值，不影响整体通行秩序。"
+            "【巴拿马运河·2026-05-04更新】"
+            "Maritime News 5月2日报道：霍尔木兹封锁推动巴拿马运河通行量"
+            "从34艘/日升至约50艘/日（LinkedIn 5月1日数据）。"
+            "日均38-40艘（正常36艘），运营在105-111%容量。"
+            "竞拍溢价创纪录——标准费率$30-40万/次，"
+            "4月竞拍价超$400万/艘（溢价900-1200%）。"
+            "FY2026 H1完成6288次通过。"
+            "LNG/LPG货船因霍尔木兹封锁改道巴拿马运河，为主要增长驱动力。"
+            "ACP称加通湖水位充足，无吃水限制，"
+            "但高管警告当前运力速度不可持续。"
         )
     },
     "malacca": {
@@ -197,7 +229,7 @@ CURRENT_WATERWAY_STATUS = {
         "level": "轻微",
         "risk_score": 38,
         "notes": (
-            "【马六甲海峡·2026-04-24】作为霍尔木兹危机的核心替代路线，"
+            "【马六甲海峡·2026-05-04】作为霍尔木兹危机的核心替代路线，"
             "通过量持续高于历史均值。"
             "ReCAAP报告偶发登船事件，须保持24小时船桥瞭望。"
         )
@@ -237,27 +269,34 @@ CURRENT_WATERWAY_STATUS = {
         )
     },
     "lombok": {
-        "status": "正常通行",
+        "status": "正常通行（伊朗原油新通道）",
         "wait_hours": "1",
         "daily_transit": "约25艘（作为替代路线增加）",
         "level": "无",
         "risk_score": 22,
         "notes": (
-            "马六甲替代路线，超大型船舶（VLCC/ULCC）偏好。"
-            "作为好望角绕行方案的一部分，通过量有所增加。"
+            "【龙目海峡·2026-05-03】Windward MIOC报告："
+            "伊朗VLCC 'HUGE' 首次在70天内开启AIS信号，"
+            "经龙目海峡（满载原油）驶向亚洲，随后再次关闭AIS。"
+            "这是自战争爆发以来首次追踪到伊朗原油经龙目海峡运往亚洲。"
+            "另一艘伊朗VLCC 'DERYA' 随后也经龙目海峡航行。"
+            "龙目海峡成为伊朗原油出口亚洲的新替代通道。"
         )
     },
     "cape": {
-        "status": "极度繁忙",
+        "status": "极度繁忙（全球主要航线）",
         "wait_hours": "1-2",
-        "daily_transit": "约120-150艘（历史正常约50艘，激增约2.5倍）",
+        "daily_transit": "激增（3月报告112%增长，已成为全球商业前线航线）",
         "level": "无",
         "risk_score": 15,
         "notes": (
-            "【好望角·2026-04-24替代路线】霍尔木兹封锁+红海危机双重重压下，"
-            "好望角已成为全球最重要替代航行路线，日均通过量翻2倍以上。"
-            "TASK报告：亚洲-美国东海岸航程+47%（额外约12天）。"
-            "开普敦港务局：港口设施正常运转，燃油补给需求激增。"
+            "【好望角·2026-05-04更新】"
+            "3月报告：开普敦港船舶增长112%（IOL 2026-03-11）。"
+            "5月2日报告：已从备用航线转变为'全球商业前线航线'（Zambian Observer）。"
+            "航程延长最多2周，物流成本增加30-50%。"
+            "非洲东部和南部走廊港口活动急剧增加。"
+            "随着苏伊士运河逐步复苏，部分航线可能回归，"
+            "但短期内好望角仍是最繁忙的替代航线。"
         )
     },
 }
@@ -265,47 +304,51 @@ CURRENT_WATERWAY_STATUS = {
 
 # ==================== 地缘政治风险评级 ====================
 GEOPOLITICAL_ADVISORY = {
-    "ormuz": ("极度风险·实质封锁", "强烈建议绕行（停火谈判中，通行仍受限）", "极高"),
-    "mandeb": ("极度风险·关闭", "禁止通行（护航暂停）", "极高"),
-    "suez": ("高度风险·严重受限", "强烈建议绕行（通行量-75%）", "高"),
-    "panama": ("中风险·高位运行", "可通行（运河运营稳定，预约船无额外等待）", "中"),
-    "cape": ("稳定·繁忙", "正常通行（全球最重要替代路线）", "低"),
+    "ormuz": ("极度风险·Project Freedom对峙", "强烈建议绕行（美军启动护航行动，伊朗威胁攻击）", "极高"),
+    "mandeb": ("极度风险·武装冲突", "强烈建议绕行（胡塞加入伊朗战争）", "极高"),
+    "suez": ("高风险·逐步复苏", "建议观望（CMA CGM/Maersk计划回归，大部分仍绕行）", "高"),
+    "panama": ("高风险·严重拥堵", "可通行但需竞拍（运营超100%容量，溢价极高）", "高"),
+    "cape": ("稳定·繁忙", "正常通行（全球商业前线航线，112%增长）", "低"),
     "malacca": ("稳定·繁忙", "正常通行（核心替代路线交通增加）", "低"),
     "turkish": ("稳定", "正常通行（需提前报告）", "低"),
     "denmark": ("稳定", "正常通行", "低"),
     "gibraltar": ("稳定·繁忙", "正常通行", "低"),
-    "lombok": ("稳定", "正常通行（替代路线交通增加）", "低"),
+    "lombok": ("稳定", "正常通行（伊朗原油新通道）", "低"),
 }
 
 
 # ==================== 安全预警数据 ====================
-# 来源: CNBC(2026-04-22), TASK(2026-04-22), Gulf News(2026-04-17)
+# 来源: Windward MIOC(2026-05-04), CENTCOM(2026-05-04), The National(2026-05-04),
+#        Maritime News(2026-05-02/04-26), TWZ(2026-04-02), France24(2026-03-30)
 SECURITY_ALERTS = {
     "ormuz": {
         "risk_level": "极高",
-        "risk_score": 93,
-        "status": "实质封锁",
+        "risk_score": 95,
+        "status": "封锁中（Project Freedom启动）",
         "alerts": [
             {
-                "type": "地缘政治封锁",
+                "type": "军事行动升级",
                 "severity": "极高",
                 "location": "霍尔木兹海峡全域",
-                "time": "2026-04-22 CNBC报道",
+                "time": "2026-05-04 CENTCOM",
                 "detail": (
-                    "特朗普宣布美伊停火延长，但伊朗拒绝全面开放海峡，"
-                    "继续控制船只通行并扣押部分油轮。"
-                    "Maersk对恢复通行持谨慎态度，未宣布全面复航。"
-                    "全球20%石油、30%+ LNG运输持续受阻。"
+                    "美国5月4日启动'Project Freedom'行动：1.5万军人、100+架战机、"
+                    "导弹驱逐舰及无人系统。旨在恢复商业航行自由。"
+                    "伊朗立即警告：任何外国军事力量进入海峡将被攻击。"
+                    "伊朗称已迫使一艘美军舰艇折返。"
+                    "JMIC维持海峡威胁等级'critical'。"
                 )
             },
             {
-                "type": "航行管控",
-                "severity": "高",
-                "location": "波斯湾/霍尔木兹海峡",
-                "time": "2026年2月至今",
+                "type": "航行安全事件",
+                "severity": "极高",
+                "location": "霍尔木兹海峡/波斯湾",
+                "time": "2026-05-04",
                 "detail": (
-                    "IRGC许可通行制度仍在执行，商业通行船只极少。"
-                    "P&I保险全面撤保，战争险附加费持续高位。"
+                    "UKMTO报告：一艘油轮在Project Freedom宣布后遭不明飞行物击中。"
+                    "UAE谴责Adnoc关联油轮在海峡遭定点打击。"
+                    "伊朗Fars通讯社声称打击了美军舰艇（CENTCOM否认）。"
+                    "~800艘商船困于波斯湾无法离开。"
                 )
             }
         ],
@@ -313,18 +356,20 @@ SECURITY_ALERTS = {
     },
     "mandeb": {
         "risk_level": "极高",
-        "risk_score": 90,
-        "status": "功能性关闭",
+        "risk_score": 88,
+        "status": "高度危险（武装冲突）",
         "alerts": [
             {
                 "type": "武装冲突升级",
                 "severity": "极高",
-                "location": "亚丁湾/曼德海峡",
-                "time": "2026-04-22 TASK报道",
+                "location": "亚丁湾/曼德海峡/红海南部",
+                "time": "2026-05-04 综合报道",
                 "detail": (
-                    "胡塞武装4月继续发动导弹和无人机协同袭击。"
-                    "Aspides/Prosperity Guardian多国护航行动实质暂停。"
-                    "曼德海峡实质关闭，所有商船改道好望角。"
+                    "胡塞武装已加入伊朗对美国/以色列战争（2026年2月28日起），"
+                    "多次发射弹道导弹和无人机。"
+                    "伊朗推动胡塞准备封锁曼德海峡，但截至目前尚未完全实现。"
+                    "EU Red Sea task force保持高度戒备。"
+                    "沙特通过红海的替代石油运输面临威胁。"
                 )
             }
         ],
@@ -332,43 +377,42 @@ SECURITY_ALERTS = {
     },
     "suez": {
         "risk_level": "高",
-        "risk_score": 75,
-        "status": "严重受限",
+        "risk_score": 65,
+        "status": "复苏中",
         "alerts": [
             {
-                "type": "地区武装威胁",
-                "severity": "高",
-                "location": "红海南部/苏伊士运河南入口",
-                "time": "2026-04-22 TASK报道",
+                "type": "逐步恢复",
+                "severity": "中",
+                "location": "苏伊士运河/红海",
+                "time": "2026-04-26 Maritime News",
                 "detail": (
-                    "TASK/project44数据：全球集装箱运输量下降75%。"
-                    "胡塞持续威胁，马士基、MSC、赫伯罗特维持绕行。"
-                    "亚洲-美国东海岸航程延长约47%（约12天）。"
-                    "每航次燃油成本增加约20万美元。"
+                    "苏伊士运河航运复苏正在进行。CMA CGM和Maersk宣布回归计划。"
+                    "MSC Euribia 4月26日完成通过。"
+                    "EU EUNAVFOR Aspides护航任务延长至2026年2月。"
+                    "但大部分承运商态度未定，整体流量仍远低于危机前。"
                 )
             }
         ],
         "status_icon": "🟠"
     },
     "panama": {
-        "risk_level": "中",
-        "risk_score": 38,
-        "status": "高位运行（稳定）",
+        "risk_level": "高",
+        "risk_score": 55,
+        "status": "严重拥堵（超负荷）",
         "alerts": [
             {
-                "type": "交通高位运行",
-                "severity": "中",
+                "type": "运力过载",
+                "severity": "高",
                 "location": "巴拿马运河",
-                "time": "2026-04-24 ACP官方声明",
+                "time": "2026-05-02 Maritime News",
                 "detail": (
-                    "霍尔木兹危机驱动全球油轮绕航，巴拿马运河交通量同比+3.7%。"
-                    "ACP 2026-04-23/24明确表示\"开放且可靠\"、无系统性拥堵。"
-                    "日均36-38艘，峰值40艘+。加通湖水位充足，无吃水限制。"
-                    "4月16日LPG船竞拍溢价创400万美元记录，属临时需求峰值。"
+                    "日均38-40艘（正常36艘），运营在105-111%容量。"
+                    "竞拍溢价超400万美元/艘（正常30-40万，溢价900-1200%）。"
+                    "LNG/LPG绕航需求推动增长，高管警告速度不可持续。"
                 )
             }
         ],
-        "status_icon": "🟡"
+        "status_icon": "🟠"
     },
     "malacca": {
         "risk_level": "中",
@@ -388,7 +432,7 @@ SECURITY_ALERTS = {
     "cape": {
         "risk_level": "低",
         "risk_score": 15,
-        "status": "正常通航（替代路线）",
+        "status": "正常通航（全球主要航线）",
         "alerts": [],
         "status_icon": "🟢"
     },
@@ -424,7 +468,7 @@ SECURITY_ALERTS = {
     "lombok": {
         "risk_level": "低",
         "risk_score": 22,
-        "status": "正常通航（替代路线）",
+        "status": "正常通航（伊朗原油新通道）",
         "alerts": [],
         "status_icon": "🟢"
     },
@@ -748,7 +792,7 @@ def update_geopolitical_data(waterways: Dict) -> Dict[str, Any]:
         geopolitics[wid] = {
             "status": status,
             "detail": detail,
-            "last_review": "2026-04-20",
+            "last_review": "2026-05-04",
             "advisory_level": level
         }
 
@@ -762,8 +806,8 @@ def build_data_quality_report() -> Dict[str, Any]:
     today_str = now_beijing().strftime("%Y-%m-%d")
     report = {
         "overall_freshness": "high",
-        "last_major_update": "2026-04-24",
-        "traffic_update_date": "2026-04-22",
+        "last_major_update": "2026-05-04",
+        "traffic_update_date": "2026-05-04",
         "data_quality": {},
         "known_issues": [
             "AIS船舶追踪: 无免费API，当前使用新闻估算数据",
@@ -793,8 +837,8 @@ def build_data_quality_report() -> Dict[str, Any]:
 def main():
     today_str = now_beijing().strftime("%Y-%m-%d")
     print("=" * 60)
-    print("🌊 全球水道监测数据抓取 v5.1")
-    print(f"   运行日期: {today_str}  (数据基准: CNBC/TASK/Gulf News 2026-04-22)")
+    print("🌊 全球水道监测数据抓取 v6.0")
+    print(f"   运行日期: {today_str}  (数据基准: Windward/CENTCOM/Maritime News 2026-05-04)")
     print("=" * 60)
     print(f"AISHub: {'已配置 ' + AISHUB_USERNAME if AISHUB_USERNAME else '未配置 (使用新闻估算)'}")
     print(f"运行时间: {now_beijing().strftime('%Y-%m-%d %H:%M:%S')} 北京时间")
@@ -823,7 +867,7 @@ def main():
     # 合并数据
     current_date_str = now_beijing().strftime("%Y-%m-%d")
     full_data = {
-        "version": "5.0",
+        "version": "6.0",
         "data_date": current_date_str,  # 动态日期：每次运行自动更新为当天日期
         "waterways": waterways['waterways'],
         "weather": weather,
@@ -835,16 +879,16 @@ def main():
         "next_update": (now_beijing() + timedelta(hours=6)).isoformat(),
         "data_sources": {
             "weather": "Open-Meteo API v2 (https://open-meteo.com) - 真实实时海象",
-            "traffic": "CNBC 2026-04-22 + TASK/project44 2026-04-22 + Gulf News 2026-04-17 + Panama Canal Authority",
-            "security": "CNBC + HormuzTracker.com + Maritime News + IMB + UKMTO (实时更新)",
-            "vessels": "AISHub (需注册付费) - 当前使用新闻估算",
+            "traffic": "Windward MIOC 2026-05-04 + CENTCOM 2026-05-04 + Maritime News 2026-05-02/04-26 + ACP 2026-04-23",
+            "security": "Windward MIOC + CENTCOM + The National 2026-05-04 + TWZ + France24 + UKMTO",
+            "vessels": "Windward AIS tracking (Gulf-wide 904 vessels tracked) - AISHub (需注册付费)",
         },
         "key_highlights": [
-            f"🔴 霍尔木兹海峡: 实质封锁（通行量较正常下降94%+，伊朗控制收费通行，每艘次逾100万美元）",
-            f"🟠 苏伊士运河: 严重受限，红海通行量下降约50%（日均30-35艘，正常约70艘），主要承运商维持绕行",
-            f"🔴 曼德海峡: 功能性关闭，胡塞持续威胁，Aspides护航行动实质暂停",
-            f"🟡 巴拿马运河: 高位运行（稳定），运河管理局否认系统性拥堵，日均36-38艘同比+3.7%",
-            f"🟢 好望角: 极度繁忙，日均120-150艘（+2.5倍），全球最重要替代航线",
+            f"🔴 霍尔木兹海峡: 美国启动Project Freedom(1.5万兵力+100+战机)恢复通航，伊朗警告攻击；日均13艘，~800艘困于波斯湾",
+            f"🟠 苏伊士运河: 复苏中，CMA CGM和Maersk宣布回归，MSC Euribia已通过；整体仍远低于正常",
+            f"🔴 曼德海峡: 胡塞已加入伊朗战争，威胁关闭但未完全实现；EU护航任务延长",
+            f"🟠 巴拿马运河: 严重拥堵（105-111%容量），竞拍溢价超$400万，日均38-40艘",
+            f"🟢 好望角: 112%增长，已成为全球商业前线航线；航程+2周，成本+30-50%",
         ],
         "disclaimer": (
             "⚠️ 本平台数据仅供参考，实际航行决策请以船公司及官方机构建议为准。"
@@ -868,7 +912,7 @@ def main():
     print(f"✓ 已保存: {output_file}")
     print(f"✓ 已保存: {public_output_file}")
     print("=" * 60)
-    print("✅ 数据抓取完成!")
+    print("✅ 数据抓取完成! (v6.0)")
     print("=" * 60)
 
 
