@@ -867,7 +867,7 @@ def main():
     # 合并数据
     current_date_str = now_beijing().strftime("%Y-%m-%d")
     full_data = {
-        "version": "6.0",
+        "version": "6.1",
         "data_date": current_date_str,  # 动态日期：每次运行自动更新为当天日期
         "waterways": waterways['waterways'],
         "weather": weather,
