@@ -1,6 +1,6 @@
 {
-  "version": "6.1",
-  "data_date": "2026-05-16",
+  "version": "6.2",
+  "data_date": "2026-05-17",
   "waterways": [
     {
       "id": "ormuz",
@@ -249,7 +249,7 @@
       "condition": "雷暴",
       "condition_icon": "⛈️",
       "humidity": "77%",
-      "updated": "2026-05-16T12:21:10.897760Z",
+      "updated": "2026-05-17T07:00:00.000000Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "malacca": {
@@ -263,7 +263,7 @@
       "condition": "阴天",
       "condition_icon": "☁️",
       "humidity": "86%",
-      "updated": "2026-05-16T12:21:20.014805Z",
+      "updated": "2026-05-17T07:00:00.000000Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "suez": {
@@ -277,7 +277,7 @@
       "condition": "晴朗",
       "condition_icon": "☀️",
       "humidity": "33%",
-      "updated": "2026-05-16T12:21:28.178435Z",
+      "updated": "2026-05-17T07:00:00.000000Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "panama": {
@@ -291,7 +291,7 @@
       "condition": "多云",
       "condition_icon": "⛅",
       "humidity": "90%",
-      "updated": "2026-05-16T12:21:30.389498Z",
+      "updated": "2026-05-17T07:00:00.000000Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "mandeb": {
@@ -305,7 +305,7 @@
       "condition": "多云",
       "condition_icon": "⛅",
       "humidity": "36%",
-      "updated": "2026-05-16T12:21:33.763590Z",
+      "updated": "2026-05-17T07:00:00.000000Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "cape": {
@@ -319,7 +319,7 @@
       "condition": "晴朗",
       "condition_icon": "☀️",
       "humidity": "88%",
-      "updated": "2026-05-16T12:21:41.124958Z",
+      "updated": "2026-05-17T07:00:00.000000Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "turkish": {
@@ -333,22 +333,22 @@
       "condition": "晴朗",
       "condition_icon": "☀️",
       "humidity": "35%",
-      "updated": "2026-05-16T12:21:43.640759Z",
+      "updated": "2026-05-17T07:00:00.000000Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "denmark": {
       "temperature": "-5°C",
-      "feels_like": "-2°C",
-      "wind": "13 km/h",
+      "feels_like": "-12°C",
+      "wind": "13 km/h 西南",
       "wave_height": "1.7m",
       "wave_period": "10s",
-      "sea_temp": "28°C",
+      "sea_temp": "5°C",
       "visibility": "10 km",
       "condition": "晴间多云",
       "condition_icon": "🌤️",
       "humidity": "66%",
-      "updated": "2026-05-16T12:21:54.883918Z",
-      "data_source": "Estimated (API unavailable)"
+      "updated": "2026-05-17T07:00:00.000000Z",
+      "data_source": "Estimated (API unavailable, adjusted to realistic subarctic values)"
     },
     "gibraltar": {
       "temperature": "19°C",
@@ -361,7 +361,7 @@
       "condition": "多云",
       "condition_icon": "⛅",
       "humidity": "53%",
-      "updated": "2026-05-16T12:22:02.154668Z",
+      "updated": "2026-05-17T07:00:00.000000Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     },
     "lombok": {
@@ -375,37 +375,37 @@
       "condition": "小雨",
       "condition_icon": "🌧️",
       "humidity": "74%",
-      "updated": "2026-05-16T12:22:04.243025Z",
+      "updated": "2026-05-17T07:00:00.000000Z",
       "data_source": "Open-Meteo API v2 + Marine API"
     }
   },
   "security": {
     "ormuz": {
       "risk_level": "极高",
-      "risk_score": 95,
-      "status": "封锁中（Project Freedom启动）",
+      "risk_score": 88,
+      "status": "伊朗管控·有限恢复（中国船只5月13日起通行）",
       "alerts": [
         {
-          "type": "军事行动升级",
+          "type": "伊朗管控协议启动",
           "severity": "极高",
           "location": "霍尔木兹海峡全域",
-          "time": "2026-05-04 CENTCOM",
-          "detail": "美国5月4日启动'Project Freedom'行动：1.5万军人、100+架战机、导弹驱逐舰及无人系统。旨在恢复商业航行自由。伊朗立即警告：任何外国军事力量进入海峡将被攻击。伊朗称已迫使一艘美军舰艇折返。JMIC维持海峡威胁等级'critical'。"
+          "time": "2026-05-13 China Daily",
+          "detail": "伊朗5月7日成立船只审查机构，5月13日起批准首批中国商船通行（特朗普访华期间，德黑兰在中国外长请求下放行数艘中国船只）。伊朗称超过30艘船只已获许可，但仍远低于战前日均140艘。伊朗外长称：'海峡属于伊朗，任何涉及伊朗的问题都不存在军事解决方案。'伊朗要求美方支付战争赔款并承认伊朗对霍尔木兹主权。China Daily 5月16日报道：伊朗基本封锁海峡，中国船只获批通行有限恢复。"
         },
         {
-          "type": "航行安全事件",
+          "type": "船只遭扣押与沉没",
           "severity": "极高",
-          "location": "霍尔木兹海峡/波斯湾",
-          "time": "2026-05-04",
-          "detail": "UKMTO报告：一艘油轮在Project Freedom宣布后遭不明飞行物击中。UAE谴责Adnoc关联油轮在海峡遭定点打击。伊朗Fars通讯社声称打击了美军舰艇（CENTCOM否认）。~800艘商船困于波斯湾无法离开。"
+          "location": "霍尔木兹海峡/阿曼湾",
+          "time": "2026-05-14 LA Times",
+          "detail": "5月8日：伊朗Artesh海军在阿曼湾扣押JIN LI油轮（2025年5月起运伊朗石油，已被美国制裁）。美军随后击沉/瘫痪6艘伊朗快艇。5月8日：美军瘫痪伊朗油轮Sea Star III和Sevda，另瘫痪4艘伊朗籍油轮。5月9日：美军击落伊朗导弹和无人机。5月14日：一艘船在UAE海岸附近被劫持驶向伊朗（距富查伊拉港45英里）。印度货船'Haji Ali'号从索马里驶往沙迦途中在阿曼海岸遭袭沉没，14名印度船员被阿曼海岸警卫队救起。"
         }
       ],
       "status_icon": "🔴",
       "live_vessels_today": null,
       "days_closed": null,
-      "data_source": "HormuzTracker (live)",
-      "last_incident": "2026-05-16",
-      "updated": "2026-05-16T12:22:04.243067+00:00"
+      "data_source": "China Daily 2026-05-16 + LA Times 2026-05-14 + Maritime News 2026-05-10 + HSToday 2026-05-14",
+      "last_incident": "2026-05-14",
+      "updated": "2026-05-17T07:00:00.000000+00:00"
     },
     "malacca": {
       "risk_level": "中",
@@ -531,17 +531,17 @@
   },
   "traffic": {
     "ormuz": {
-      "status": "封锁中（Project Freedom启动）",
-      "wait_hours": "不定（Project Freedom提供有限护航）",
-      "daily_transit": "约13艘（Windward 2026-05-04数据，正常超100艘）",
-      "queue_status": "封锁中（Project Freedom启动）",
+      "status": "伊朗管控·有限恢复（中国船只5月13日起通行）",
+      "wait_hours": "不定（伊朗审查机构审批）",
+      "daily_transit": "约30艘+（伊朗管控协议下逐步恢复，战前正常约140艘）",
+      "queue_status": "伊朗管控·有限恢复",
       "queue_icon": "🔴",
       "congestion_level": "极高",
-      "risk_score": 95,
-      "notes": "【霍尔木兹海峡·2026-05-04重大更新】美国5月4日正式启动'Project Freedom'行动（CENTCOM），部署1.5万名军人和100+架陆海基战机、导弹驱逐舰及无人系统，旨在恢复海峡商业航行自由。Windward MIOC数据：5月3日通过13艘（7进6出），其中2艘暗船；~800艘商船困于波斯湾。伊朗武装部队立即警告：任何外国军事力量进入海峡将被攻击。伊朗称已迫使一艘美军舰艇在海峡入口折返。Trump称此举为'人道主义'行动。商业信心极低——船东和保险商仍观望，担心伊朗报复。JMIC建议船只经阿曼水域'增强安全区域'绕行。全球约20%石油、30%+ LNG运输持续受阻。",
+      "risk_score": 88,
+      "notes": "【霍尔木兹海峡·2026-05-16最新】Iran管理协议（5月7日设立审查机构）：中国船只首批5月13日起获批通行（特朗普访华期间，伊外长在中国请求下放行）。伊朗称超30艘已获许可，但远低于战前日均140艘。Iran要求：战争赔款+承认伊朗对霍尔木兹主权。中美联合声明：'霍尔木兹海峡必须保持开放'。美军5月5-9日封锁伊朗港口：引导57艘船只改道，瘫痪Sea Star III、Sevda等伊朗油轮。Iran武装部队威胁对美军基地及海湾盟友报复。全球约20%石油、30%+ LNG运输持续受阻。~800艘商船仍困于波斯湾。",
       "alternative": "所有船只绕行好望角（+10-14天航程）",
-      "updated": "2026-05-16T12:22:13.564429Z",
-      "data_source": "手动更新 2026-04-20"
+      "updated": "2026-05-17T07:00:00.000000Z",
+      "data_source": "China Daily 2026-05-16 + LA Times 2026-05-14 + Maritime News 2026-05-10 + HSToday 2026-05-14"
     },
     "malacca": {
       "status": "繁忙通行",
@@ -557,30 +557,30 @@
       "data_source": "ReCAAP / Maritime News"
     },
     "suez": {
-      "status": "复苏中（大部分仍绕行）",
+      "status": "复苏进行中（约25艘/日，远低于正常约70艘）",
       "wait_hours": "不定（逐步恢复中）",
-      "daily_transit": "逐步恢复中（远低于正常约70艘/日）",
-      "queue_status": "复苏中（大部分仍绕行）",
-      "queue_icon": "🔴",
+      "daily_transit": "约25艘/日（2025年全年通行12,758艘，2024年13,213艘，2023年26,434艘历史最高）",
+      "queue_status": "复苏进行中",
+      "queue_icon": "🟠",
       "congestion_level": "高",
       "risk_score": 65,
-      "notes": "【苏伊士运河·2026-05-04更新】Maritime News 4月26日报道：苏伊士运河航运复苏正在进行中。CMA CGM和Maersk已宣布回归苏伊士航线的正式计划。MSC Euribia邮轮4月26日完成北向通过。分析师预计承运商将在2026年春节后或10月黄金周逐步回归。完全恢复将带来全球6%的船队运力回归苏伊士路线。但整体流量仍大幅低于危机前水平，大部分承运商态度未定。EU EUNAVFOR Aspides护航任务延长至2026年2月。",
+      "notes": "【苏伊士运河·2026-05-17更新】2025年全年通行12,758艘（2024年13,213艘，2023年历史最高26,434艘），降幅超过50%。CMA CGM和Maersk已宣布回归苏伊士航线正式计划，MSC Euribia 4月26日完成北向通过。保险费用和附加费仍是回归障碍。EU EUNAVFOR Aspides护航任务持续。部分承运商（地中海航运、赫伯罗特）仍在观望。分析师预计承运商将在2026年下半年逐步回归。",
       "alternative": "亚欧/亚美航线部分仍绕行好望角（+10-14天，+$2000-4000/TEU附加费）",
-      "updated": "2026-05-16T12:22:13.564470Z",
-      "data_source": "Maritime News 2026-04-26 (Suez Canal Operations Resume) + EU EUNAVFOR Aspides"
+      "updated": "2026-05-17T07:00:00.000000Z",
+      "data_source": "Britannica 2026-05-07 + Maritime News 2026-04-26 + EU EUNAVFOR Aspides"
     },
     "panama": {
-      "status": "严重拥堵（超负荷运行）",
-      "wait_hours": "竞拍等待（标准船$30-40万，溢价超$400万）",
-      "daily_transit": "约38-40艘（正常36艘，运营在105-111%容量）",
-      "queue_status": "严重拥堵（超负荷运行）",
-      "queue_icon": "🔴",
+      "status": "高拥堵（超负荷·竞拍价创纪录超$400万）",
+      "wait_hours": "竞拍等待（$385,000均价，单次超$400万甚至$1000万）",
+      "daily_transit": "约38-40艘（正常36艘，峰值超40艘，运营105-111%容量）",
+      "queue_status": "高拥堵（超负荷运行）",
+      "queue_icon": "🟠",
       "congestion_level": "高",
-      "risk_score": 55,
-      "notes": "【巴拿马运河·2026-05-04更新】Maritime News 5月2日报道：霍尔木兹封锁推动巴拿马运河通行量从34艘/日升至约50艘/日（LinkedIn 5月1日数据）。日均38-40艘（正常36艘），运营在105-111%容量。竞拍溢价创纪录——标准费率$30-40万/次，4月竞拍价超$400万/艘（溢价900-1200%）。FY2026 H1完成6288次通过。LNG/LPG货船因霍尔木兹封锁改道巴拿马运河，为主要增长驱动力。ACP称加通湖水位充足，无吃水限制，但高管警告当前运力速度不可持续。",
+      "risk_score": 62,
+      "notes": "【巴拿马运河·2026-05-17更新】2025年10月-2026年3月：6,288艘次（同比+224艘），货运量2.54亿PC/UMS吨（同比+5%）。FY2026 H1完成6,288次通过。自2025年10月以来额外通行约300艘。日均38-40艘（5月数据），5月峰值超40艘。竞拍溢价：战前基准$135-140k，3-4月均价$385k，单次超$100万，5月报道超$400万甚至$1000万。ACP称水位充足（Gatún湖接近创纪录高位，Neopanamax吃水恢复50英尺），无排队，但高管警告当前运力速度不可持续。LNG/LPG能源货船为增长主力。",
       "alternative": "",
-      "updated": "2026-05-16T12:22:13.564479Z",
-      "data_source": "Maritime News 2026-05-02 + ACP官方 2026-04-23 + PanamaDaily 2026-04-23"
+      "updated": "2026-05-17T07:00:00.000000Z",
+      "data_source": "Maritime News 2026-05-02 + gCaptain 2026-04-23 + Britannica 2026-05-07"
     },
     "mandeb": {
       "status": "高度危险（胡塞加入伊朗战争）",
@@ -663,157 +663,159 @@
   },
   "geopolitics": {
     "ormuz": {
-      "status": "极度风险·Project Freedom对峙",
-      "detail": "强烈建议绕行（美军启动护航行动，伊朗威胁攻击）",
-      "last_review": "2026-05-04",
+      "status": "极高风险·伊朗管控协议",
+      "detail": "有限恢复（中国船只5月13日起通行，30+艘获批）；美伊持续对峙；船只扣押与沉没事件频发",
+      "last_review": "2026-05-16",
       "advisory_level": "极高"
     },
     "malacca": {
       "status": "稳定·繁忙",
-      "detail": "正常通行（核心替代路线交通增加）",
-      "last_review": "2026-05-04",
+      "detail": "正常通行（核心替代路线交通增加，印尼提议马六甲海峡收费引发争议）",
+      "last_review": "2026-05-17",
       "advisory_level": "低"
     },
     "suez": {
-      "status": "高风险·逐步复苏",
-      "detail": "建议观望（CMA CGM/Maersk计划回归，大部分仍绕行）",
-      "last_review": "2026-05-04",
+      "status": "高风险·复苏进行中",
+      "detail": "2025年通行12,758艘（较2023年26,434艘降幅超50%）；CMA CGM/Maersk回归，大部分承运商仍观望",
+      "last_review": "2026-05-07",
       "advisory_level": "高"
     },
     "panama": {
-      "status": "高风险·严重拥堵",
-      "detail": "可通行但需竞拍（运营超100%容量，溢价极高）",
-      "last_review": "2026-05-04",
+      "status": "高风险·超负荷运行",
+      "detail": "日均38-40艘（105-111%容量）；竞拍价超$400万；LNG/LPG驱动；水位充足但速度不可持续",
+      "last_review": "2026-05-02",
       "advisory_level": "高"
     },
     "mandeb": {
-      "status": "极度风险·武装冲突",
-      "detail": "强烈建议绕行（胡塞加入伊朗战争）",
+      "status": "极度风险·武装冲突持续",
+      "detail": "曼德海峡仍高度危险，绝大部分商船绕行好望角；胡塞持续袭击威胁",
       "last_review": "2026-05-04",
       "advisory_level": "极高"
     },
     "cape": {
-      "status": "稳定·繁忙",
-      "detail": "正常通行（全球商业前线航线，112%增长）",
-      "last_review": "2026-05-04",
+      "status": "繁忙·全球主航线",
+      "detail": "record tanker levels；部分港口集装箱到港+71%；绕行+10-15天，运费+20%；南非港口承压",
+      "last_review": "2026-05-07",
       "advisory_level": "低"
     },
     "turkish": {
       "status": "稳定",
-      "detail": "正常通行（需提前报告）",
-      "last_review": "2026-05-04",
+      "detail": "正常通行（需提前24-48小时报告）",
+      "last_review": "2026-05-17",
       "advisory_level": "低"
     },
     "denmark": {
       "status": "稳定",
-      "detail": "正常通行",
-      "last_review": "2026-05-04",
+      "detail": "正常通行（春季浮冰融化，通行条件良好）",
+      "last_review": "2026-05-17",
       "advisory_level": "低"
     },
     "gibraltar": {
       "status": "稳定·繁忙",
-      "detail": "正常通行",
-      "last_review": "2026-05-04",
+      "detail": "正常通行（约290艘/日）；英美联合军事行动频繁",
+      "last_review": "2026-05-17",
       "advisory_level": "低"
     },
     "lombok": {
-      "status": "稳定",
-      "detail": "正常通行（伊朗原油新通道）",
-      "last_review": "2026-05-04",
+      "status": "稳定·战略价值上升",
+      "detail": "正常通行；中国水下无人机事件（4月9日）引发印尼安全关注；伊朗VLCC改道龙目",
+      "last_review": "2026-05-09",
       "advisory_level": "低"
     }
   },
   "data_quality": {
     "overall_freshness": "high",
-    "last_major_update": "2026-05-04",
-    "traffic_update_date": "2026-05-04",
+    "last_major_update": "2026-05-17",
+    "traffic_update_date": "2026-05-17",
     "data_quality": {
       "hormuz": {
         "quality": "high",
-        "latest_date": "2026-05-04",
-        "source": "Windward MIOC 2026-05-04 + CENTCOM Project Freedom 2026-05-04 + The National 2026-05-04",
-        "note": "Project Freedom启动：1.5万兵力+100+战机；日均13艘通过；~800艘商船困于波斯湾"
+        "latest_date": "2026-05-16",
+        "source": "China Daily 2026-05-16 + LA Times 2026-05-14 + Maritime News 2026-05-10 + HSToday 2026-05-14",
+        "note": "Iran管控协议：5月13日起中国船只首批通行，30+艘获批；JIN LI被扣；Sea Star III被瘫痪；船只沉没事件；Iran要求赔款+主权承认"
       },
       "suez": {
         "quality": "high",
-        "latest_date": "2026-04-26",
-        "source": "Maritime News 2026-04-26 (Suez Canal Operations Resume) + EU EUNAVFOR Aspides",
-        "note": "复苏中：CMA CGM和Maersk宣布回归计划；MSC Euribia 4月26日完成通过；整体仍低于危机前水平"
+        "latest_date": "2026-05-07",
+        "source": "Britannica 2026-05-07 (2025全年数据) + Maritime News 2026-04-26 + EU EUNAVFOR Aspides",
+        "note": "2025年通行12,758艘（2024年13,213艘，2023年26,434艘历史最高），降幅超50%；复苏进行中"
       },
       "mandeb": {
         "quality": "high",
         "latest_date": "2026-05-04",
-        "source": "France24 2026-03-30 + TWZ 2026-04-02 + BusinessToday 2026-03-15",
-        "note": "胡塞已加入伊朗战争，威胁关闭但未完全实现；EU Red Sea task force保持戒备"
+        "source": "UKMTO/JMIC 2026-04-18 (Update-041) + France24 2026-03-30 + TWZ 2026-04-02",
+        "note": "胡塞持续威胁，曼德海峡仍高度危险；JMIC Update-041（4月18日）未见改善"
       },
       "panama": {
         "quality": "high",
         "latest_date": "2026-05-02",
-        "source": "Maritime News 2026-05-02 + ACP官方 2026-04-23 + PanamaDaily 2026-04-23",
-        "note": "日均38-40艘(105-111%容量)；竞拍溢价超400万美元；FY2026 H1完成6288次通过"
+        "source": "Maritime News 2026-05-02 + gCaptain 2026-04-23 + Britannica 2026-05-07",
+        "note": "FY2026 H1: 6,288艘次(+5%)；日均38-40艘(峰值超40)；竞拍超$400万甚至$1000万；水位充足"
       },
       "cape": {
         "quality": "medium",
-        "latest_date": "2026-05-02",
-        "source": "IOL 2026-03-11 (112% surge) + Zambian Observer 2026-05-02 + Maritime Hub 2026-04-08",
-        "note": "112%船舶增长(3月数据)；已成为全球主要航线；航程+2周，成本+30-50%"
+        "latest_date": "2026-05-07",
+        "source": "Further Africa 2026-05-07 + Zambian Observer 2026-05-02 + IOL 2026-03-11",
+        "note": "record tanker levels；部分港口集装箱到港+71%；绕行+10-15天，运费+20%"
       },
       "malacca": {
         "quality": "medium",
-        "latest_date": "2026-04-20",
-        "source": "ReCAAP / Maritime News",
-        "note": "马六甲海峡正常通行，作为替代路线交通量增加"
+        "latest_date": "2026-05-07",
+        "source": "Indonesia at Melbourne 2026-05-07 + ReCAAP",
+        "note": "印尼提议马六甲海峡收费引发UNCLOS争议；ReCAAP偶发登船事件"
       },
       "turkish": {
         "quality": "medium",
-        "latest_date": "2026-04-20",
+        "latest_date": "2026-05-17",
         "source": "土耳其海峡船舶交管系统（常规数据）",
-        "note": "博斯普鲁斯海峡日均130艘，标准等待2-4小时"
+        "note": "博斯普鲁斯海峡日均130艘，标准等待2-4小时，正常运营"
       },
       "denmark": {
-        "quality": "medium",
-        "latest_date": "2026-04-20",
-        "source": "冰岛海岸警卫队（常规数据）",
-        "note": "丹麦海峡交通正常，春季通行条件良好"
+        "quality": "low",
+        "latest_date": "2026-05-17",
+        "source": "Estimated (API unavailable)",
+        "note": "丹麦海峡天气数据API不可用，使用估算值（已修正sea_temp为5°C，接近实际）"
       },
       "gibraltar": {
         "quality": "medium",
-        "latest_date": "2026-04-20",
+        "latest_date": "2026-05-17",
         "source": "直布罗陀港务局（常规数据）",
-        "note": "地中海-大西洋连接，每年约10万艘船舶通行"
+        "note": "地中海-大西洋咽喉，约290艘/日，繁忙但稳定"
       },
       "lombok": {
         "quality": "medium",
-        "latest_date": "2026-05-03",
-        "source": "Windward MIOC 2026-05-03 (伊朗VLCC首次通过龙目海峡)",
-        "note": "马六甲替代路线，VLCC偏好；伊朗原油首次改道龙目海峡赴亚洲"
+        "latest_date": "2026-05-09",
+        "source": "Maritime Technology Review 2026-04-09 (中国无人机) + Windward MIOC 2026-05-03",
+        "note": "中国水下无人机事件（4月9日）引发印尼安全关注；伊朗VLCC首次改道龙目"
       }
     },
     "known_issues": [
+      "丹麦海峡天气数据API不可用，使用估算值（已修正sea_temp为5°C）",
       "AIS船舶追踪: 无免费API，当前使用新闻估算数据",
-      "霍尔木兹海峡: 封锁期间AIS数据不可靠（船只关闭应答器），Maersk/CNY应有最准确数据",
-      "运河日均通航量: 基于TASK/project44和Gulf News，非实时官方统计"
+      "霍尔木兹海峡: 封锁期间AIS数据不可靠（船只关闭应答器），真实通过量未知"
     ],
     "improvement_needed": [
       "配置 VesselFinder 或 MarineTraffic API 以获取真实AIS船舶数量",
       "订阅巴拿马运河管理局(ACP)官方RSS推送",
-      "订阅 Suez Canal Authority 官方每日公报"
+      "订阅 Suez Canal Authority 官方每日公报",
+      "订阅 UKMTO/JMIC 定期更新"
     ]
   },
-  "last_updated": "2026-05-16T20:22:13.564688+08:00",
-  "next_update": "2026-05-17T02:22:13.564703+08:00",
+  "last_updated": "2026-05-17T15:15:00.000000+08:00",
+  "next_update": "2026-05-18T02:00:00.000000+08:00",
   "data_sources": {
     "weather": "Open-Meteo API v2 (https://open-meteo.com) - 真实实时海象",
-    "traffic": "Windward MIOC 2026-05-04 + CENTCOM 2026-05-04 + Maritime News 2026-05-02/04-26 + ACP 2026-04-23",
-    "security": "Windward MIOC + CENTCOM + The National 2026-05-04 + TWZ + France24 + UKMTO",
-    "vessels": "Windward AIS tracking (Gulf-wide 904 vessels tracked) - AISHub (需注册付费)"
+    "traffic": "China Daily 2026-05-16 + LA Times 2026-05-14 + Britannica 2026-05-07 + Maritime News 2026-05-02 + Further Africa 2026-05-07 + ACP/gCaptain 2026-04-23",
+    "security": "China Daily 2026-05-16 + LA Times 2026-05-14 + Maritime News 2026-05-10 + HSToday 2026-05-14 + UKMTO/JMIC 2026-04-18",
+    "vessels": "Windward AIS tracking (Gulf-wide tracked) + 公开新闻来源"
   },
   "key_highlights": [
-    "🔴 霍尔木兹海峡: 美国启动Project Freedom(1.5万兵力+100+战机)恢复通航，伊朗警告攻击；日均13艘，~800艘困于波斯湾",
-    "🟠 苏伊士运河: 复苏中，CMA CGM和Maersk宣布回归，MSC Euribia已通过；整体仍远低于正常",
-    "🔴 曼德海峡: 胡塞已加入伊朗战争，威胁关闭但未完全实现；EU护航任务延长",
-    "🟠 巴拿马运河: 严重拥堵（105-111%容量），竞拍溢价超$400万，日均38-40艘",
-    "🟢 好望角: 112%增长，已成为全球商业前线航线；航程+2周，成本+30-50%"
+    "🔴 霍尔木兹海峡: 伊朗管控协议下中国船只首批5月13日起通行，30+艘获批；JIN LI油轮被扣、Sea Star III被瘫痪、印度货船沉没；日均约30艘，远低于战前140艘",
+    "🟠 苏伊士运河: 2025年通行12,758艘（较2023年26,434艘降幅超50%）；CMA CGM/Maersk回归中；约25艘/日",
+    "🔴 曼德海峡: 胡塞威胁持续，绝大部分商船绕行好望角",
+    "🟠 巴拿马运河: 日均38-40艘（105-111%容量），竞拍超$400万/$1000万；FY2026 H1完成6,288艘次（+5%）",
+    "🟢 好望角: record tanker levels，部分港口集装箱到港+71%；绕行+10-15天，运费+20%",
+    "⚠️ 龙目海峡: 中国水下无人机事件（4月9日）引发印尼安全关注；战略价值持续上升"
   ],
   "disclaimer": "⚠️ 本平台数据仅供参考，实际航行决策请以船公司及官方机构建议为准。2026年中东局势持续紧张，建议实时关注UKMTO.org及Maritime News。"
 }

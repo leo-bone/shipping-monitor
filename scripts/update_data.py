@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-全球关键水道数据抓取脚本 v6.0
+全球关键水道数据抓取脚本 v6.2
 
-v6.0 (2026-05-04) 重大数据更新：
-- 霍尔木兹海峡: 美国5月4日启动"Project Freedom"(1.5万兵力+100+战机)恢复通航，
-  伊朗警告将攻击进入海峡的外国军事力量。Windward数据：日均13艘通过，
-  ~800艘商船困于波斯湾。商业信心极低，船东/保险商仍观望。
-- 苏伊士运河: 4月26日报告复苏中。CMA CGM和Maersk宣布回归计划，
-  MSC Euribia 4月26日完成北向通过。EU延长Aspides护航至2026年2月。
+v6.2 (2026-05-17) 数据全面校正：
+- 霍尔木兹: 伊朗管控协议（5月13日起中国船只首批通行，30+艘获批）；JIN LI被扣、Sea Star III被瘫痪
+- 苏伊士运河: 加入2025年全年通行12,758艘数据（较2023年26,434艘降幅超50%）
+- 巴拿马运河: 竞拍超$400万/$1000万；FY2026 H1完成6,288艘次（+5%）
+- 好望角: record tanker levels，部分港口集装箱到港+71%；运费+20%
+- 龙目海峡: 中国水下无人机事件（4月9日）；战略价值上升
+- 丹麦海峡: 修正sea_temp从28°C为5°C（API不可用，修正为实际亚北极值）
   整体仍低于危机前水平，大部分承运商未定。
 - 曼德海峡: 胡塞已加入伊朗对美战争，多次发射导弹和无人机。
   威胁关闭但未完全实现。EU Red Sea task force保持戒备。
@@ -837,8 +838,8 @@ def build_data_quality_report() -> Dict[str, Any]:
 def main():
     today_str = now_beijing().strftime("%Y-%m-%d")
     print("=" * 60)
-    print("🌊 全球水道监测数据抓取 v6.0")
-    print(f"   运行日期: {today_str}  (数据基准: Windward/CENTCOM/Maritime News 2026-05-04)")
+    print("🌊 全球水道监测数据抓取 v6.2")
+    print(f"   运行日期: {today_str}  (数据基准: 2026-05-17 综合新闻)")
     print("=" * 60)
     print(f"AISHub: {'已配置 ' + AISHUB_USERNAME if AISHUB_USERNAME else '未配置 (使用新闻估算)'}")
     print(f"运行时间: {now_beijing().strftime('%Y-%m-%d %H:%M:%S')} 北京时间")
@@ -867,7 +868,7 @@ def main():
     # 合并数据
     current_date_str = now_beijing().strftime("%Y-%m-%d")
     full_data = {
-        "version": "6.1",
+        "version": "6.2",
         "data_date": current_date_str,  # 动态日期：每次运行自动更新为当天日期
         "waterways": waterways['waterways'],
         "weather": weather,
@@ -912,7 +913,7 @@ def main():
     print(f"✓ 已保存: {output_file}")
     print(f"✓ 已保存: {public_output_file}")
     print("=" * 60)
-    print("✅ 数据抓取完成! (v6.0)")
+    print("✅ 数据抓取完成! (v6.2)")
     print("=" * 60)
 
 
