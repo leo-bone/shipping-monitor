@@ -857,6 +857,40 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--text-muted);
         }
+    <style>
+        /* 数据时效性提示条 */
+        .freshness {
+            max-width: 1200px;
+            margin: 16px auto -8px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            align-items: center;
+            border: 1px solid transparent;
+        }
+        .freshness.ok {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+            color: #166534;
+        }
+        .freshness.warn {
+            background: #fffbeb;
+            border-color: #fde68a;
+            color: #92400e;
+        }
+        .freshness.stale {
+            background: #fef2f2;
+            border-color: #fecaca;
+            color: #991b1b;
+        }
+        .freshness .f-item { white-space: nowrap; }
+        .freshness .f-sep { opacity: .4; }
+        .freshness strong { font-weight: 700; }
+        .freshness .f-note { flex-basis: 100%; opacity: .85; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -865,12 +899,20 @@
         <div class="header-content">
             <div class="header-status">
                 <span class="status-dot"></span>
-                <span>系统正常运行 · 每10分钟自动更新</span>
+                <span>系统正常运行 · 天气每10分钟抓取 · 地缘/通航为人工快照</span>
             </div>
             <h1>🌊 <span>全球关键水道</span>通航监测平台</h1>
             <p>实时监控全球最重要的10条海上通道 · 安全预警 · 天气海况 · 通航状态</p>
         </div>
     </header>
+
+    <!-- 数据时效性提示（区分「实时天气」与「人工快照」） -->
+    <div id="freshness" class="freshness ok" role="status" aria-live="polite" hidden>
+        <span class="f-item">🌤️ 天气 <strong id="fxWeather">-</strong></span>
+        <span class="f-sep">·</span>
+        <span class="f-item">📰 地缘/通航快照 <strong id="fxSnapshot">-</strong><span id="fxAge"></span></span>
+        <span class="f-item f-note" id="fxNote"></span>
+    </div>
 
     <!-- Controls -->
     <div class="controls">
@@ -1120,6 +1162,49 @@
                 updateTime.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
             document.getElementById('footerUpdate').textContent = 
                 updateTime.toLocaleString('zh-CN');
+
+            renderFreshness(data);
+        }
+
+        // 数据时效性：把「实时天气」和「人工快照」分开标注，避免把陈旧快照当成实时数据
+        function renderFreshness(data) {
+            const box = document.getElementById('freshness');
+            if (!box) return;
+
+            // 天气：来自 Open-Meteo，随每次抓取刷新，信任 last_updated
+            const wTime = new Date(data.last_updated);
+            const wAgeMin = Math.max(0, Math.round((Date.now() - wTime.getTime()) / 60000));
+
+            // 地缘/通航/安全：人工维护的快照，真实日期是 data_date
+            const snapStr = data.data_date || null;
+            const snapTime = snapStr ? new Date(snapStr + 'T00:00:00+08:00') : null;
+            const snapAgeDays = snapTime
+                ? Math.max(0, Math.floor((Date.now() - snapTime.getTime()) / 86400000))
+                : null;
+
+            document.getElementById('fxWeather').textContent =
+                wAgeMin < 60 ? `实时（${wAgeMin} 分钟前）` : `${Math.round(wAgeMin / 60)} 小时前`;
+
+            document.getElementById('fxSnapshot').textContent = snapStr || '未知';
+            document.getElementById('fxAge').textContent =
+                snapAgeDays === null ? '' : `（${snapAgeDays} 天前）`;
+
+            let level = 'ok';
+            let note = '天气为实时抓取；地缘政治、通航量、安全事件为人工核实快照，非实时。';
+            if (snapAgeDays === null) {
+                level = 'warn';
+                note = '缺少数据快照日期，无法判断地缘/通航信息的新鲜度。';
+            } else if (snapAgeDays > 30) {
+                level = 'stale';
+                note = `⚠️ 地缘/通航信息已 ${snapAgeDays} 天未更新，仅天气为实时。此类信息用于决策前请先核对最新新闻。`;
+            } else if (snapAgeDays > 7) {
+                level = 'warn';
+                note = `地缘/通航信息为 ${snapAgeDays} 天前的人工快照，可能滞后于最新局势；天气仍为实时。`;
+            }
+
+            box.className = 'freshness ' + level;
+            document.getElementById('fxNote').textContent = note;
+            box.hidden = false;
         }
 
         // Open Modal
