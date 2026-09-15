@@ -897,11 +897,46 @@ def main():
         )
     }
 
-    # 保存数据
+    # ------------------------------------------------------------------
+    # 保留人工核实的快照，只用实时天气覆盖天气部分
+    #
+    # 背景：本脚本里的 security / traffic / geopolitics 是硬编码的旧快照，
+    # 但 data_date 每次运行都会被改写成当天，导致站点「显示今天更新、内容却是几个月前」。
+    # 人工核实过的新快照由 scripts/apply_snapshot_*.py 写入，其 data_date 一定晚于
+    # 下面的基线日期。遇到这种情况，本脚本只更新天气与时间，绝不回退人工快照。
+    # ------------------------------------------------------------------
+    HARDCODED_SNAPSHOT_DATE = "2026-05-04"
+    SNAPSHOT_KEYS = (
+        "data_date", "security", "traffic", "geopolitics",
+        "key_highlights", "data_quality", "data_sources", "disclaimer", "version",
+    )
+
     output_file = os.path.join(DATA_DIR, 'full_data.json')
     public_output_file = os.path.join(PUBLIC_DATA_DIR, 'full_data.json')
-
     os.makedirs(PUBLIC_DATA_DIR, exist_ok=True)
+
+    existing = None
+    if os.path.exists(public_output_file):
+        try:
+            with open(public_output_file, 'r', encoding='utf-8') as f:
+                existing = json.load(f)
+        except Exception as e:
+            print(f"⚠️  读取既有数据失败（将使用硬编码快照）: {e}")
+            existing = None
+
+    if isinstance(existing, dict) and (existing.get("data_date") or "") > HARDCODED_SNAPSHOT_DATE:
+        for key in SNAPSHOT_KEYS:
+            if key in existing:
+                full_data[key] = existing[key]
+        # 天气与更新时间仍然刷新
+        full_data["last_updated"] = now_beijing().isoformat()
+        print(f"✓ 保留人工快照 {existing.get('data_date')}"
+              f"（晚于硬编码基线 {HARDCODED_SNAPSHOT_DATE}），本次仅刷新天气")
+    else:
+        print(f"⚠️  使用脚本内硬编码快照（基线 {HARDCODED_SNAPSHOT_DATE}）。"
+              f"地缘/通航数据可能已过时，请运行 scripts/apply_snapshot_*.py 更新。")
+
+    # 保存数据
 
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(full_data, f, ensure_ascii=False, indent=2)
