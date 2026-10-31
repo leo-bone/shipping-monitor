@@ -67,7 +67,7 @@ jobs:
           ref: main  # 确保拿到最新 commit（包含刚更新的数据）
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
