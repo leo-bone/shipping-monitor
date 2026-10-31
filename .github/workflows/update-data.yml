@@ -1,9 +1,9 @@
 name: Update Shipping Data
 
 on:
-  # 每小时整点自动运行
+  # 每日一次：03:07 UTC（北京时间 11:07 左右）更新数据并重新部署
   schedule:
-    - cron: '0 * * * *'
+    - cron: '7 3 * * *'
   # 允许手动触发
   workflow_dispatch:
 
