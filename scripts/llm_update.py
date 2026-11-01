@@ -111,33 +111,86 @@ BATCH_PROMPT_TEMPLATE = """你是航运情报分析师。请根据当前（{date
 5. 只返回 JSON，不要任何其他文字"""
 
 
+def pick_available_model():
+    """自动探测当前 API Key 可用的 Gemini 模型。
+
+    硬编码模型名会随 Google 弃用而失效（曾因 gemini-2.0-flash 下线导致
+    每次调用都 404、静默退回静态规则）。优先选 flash 系列的最新版本。
+    """
+    try:
+        r = requests.get(
+            "https://generativelanguage.googleapis.com/v1beta/models",
+            params={"key": GEMINI_API_KEY, "pageSize": 200},
+            timeout=20,
+        )
+        r.raise_for_status()
+        models = []
+        for m in r.json().get("models", []):
+            if "generateContent" not in m.get("supportedGenerationMethods", []):
+                continue
+            name = m.get("name", "").replace("models/", "")
+            # 跳过 embedding / 视觉专用等非对话模型
+            if any(x in name for x in ("embedding", "aqa", "imagen", "veo")):
+                continue
+            models.append(name)
+        if not models:
+            return None
+        print(f"  🔍 可用模型: {', '.join(models[:6])}")
+        flash = [m for m in models if "flash" in m and "lite" not in m]
+        pool = flash or models
+        # 版本号大的优先（gemini-2.5 > gemini-2.0）
+        def ver(m):
+            parts = [p for p in m.replace("gemini-", "").split("-") if p[:1].isdigit()]
+            try:
+                return tuple(int(p.split(".")[0]) for p in parts[:2])
+            except Exception:
+                return (0, 0)
+        return sorted(pool, key=ver, reverse=True)[0]
+    except Exception as e:
+        print(f"  ⚠️  模型列表获取失败: {e}")
+        return None
+
+
 def analyze_all_with_gemini():
     """一次性调用 Gemini 分析所有水道，节省 API 配额"""
     today = now_beijing().strftime("%Y年%m月%d日")
     prompt = BATCH_PROMPT_TEMPLATE.format(date=today)
 
+    model = pick_available_model()
+    if not model:
+        print("  ⚠️  没有可用的 Gemini 模型")
+        return {}
+
     url = (
         "https://generativelanguage.googleapis.com/v1beta/"
-        f"models/gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
+        f"models/{model}:generateContent?key={GEMINI_API_KEY}"
     )
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "responseMimeType": "application/json",
-            "maxOutputTokens": 2048,
+            "maxOutputTokens": 4096,
             "temperature": 0.3,
         }
     }
 
     try:
-        r = requests.post(url, json=payload, timeout=60)
+        r = requests.post(url, json=payload, timeout=90)
         r.raise_for_status()
         text = r.json()["candidates"][0]["content"]["parts"][0]["text"]
         result = json.loads(text)
-        print(f"  ✅ Gemini 分析完成，覆盖 {len(result)} 个水道")
+        print(f"  ✅ Gemini（{model}）分析完成，覆盖 {len(result)} 个水道")
         return result
+    except requests.HTTPError as e:
+        body = ""
+        try:
+            body = e.response.text[:300]
+        except Exception:
+            pass
+        print(f"  ⚠️  Gemini({model}) 调用失败: {e} | {body}")
+        return {}
     except Exception as e:
-        print(f"  ⚠️  Gemini 批量分析失败: {e}")
+        print(f"  ⚠️  Gemini({model}) 批量分析失败: {e}")
         return {}
 
 
@@ -339,9 +392,22 @@ def main():
 
     # 3. 更新时间戳
     data["last_updated"] = ts_beijing.isoformat()
-    data["next_update"] = (ts_beijing + timedelta(hours=1)).isoformat()
+    data["next_update"] = (ts_beijing + timedelta(days=1)).isoformat()
 
-    # 4. 保存
+    # 4. 数据新鲜度标记（只有 Gemini 真跑通才算"地缘快照已更新"）
+    dq = data.setdefault("data_quality", {})
+    if llm_results:
+        data["data_date"] = today_str
+        dq["last_major_update"] = today_str
+        dq["traffic_update_date"] = today_str
+        dq["overall_freshness"] = "high"
+        dq["llm_status"] = f"ok ({today_str} Gemini 分析)"
+    else:
+        # Gemini 失败：不伪造新鲜度，只记录原因，页面继续显示上次人工核实日期
+        dq["llm_status"] = f"failed ({today_str}，已退回静态规则，data_date 保持 {data.get('data_date')})"
+        print(f"  ℹ️  data_date 保持 {data.get('data_date')}（Gemini 未成功，不标记为新数据）")
+
+    # 5. 保存
     os.makedirs(PUBLIC_DATA_DIR, exist_ok=True)
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
