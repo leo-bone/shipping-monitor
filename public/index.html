@@ -1190,7 +1190,7 @@
                 snapAgeDays === null ? '' : `（${snapAgeDays} 天前）`;
 
             let level = 'ok';
-            let note = '天气为实时抓取；地缘政治、通航量、安全事件为人工核实快照，非实时。';
+            let note = '天气与海况为实时抓取；地缘政治、通航量、安全事件为每日 AI 分析快照，非实时。';
             if (snapAgeDays === null) {
                 level = 'warn';
                 note = '缺少数据快照日期，无法判断地缘/通航信息的新鲜度。';
@@ -1199,7 +1199,7 @@
                 note = `⚠️ 地缘/通航信息已 ${snapAgeDays} 天未更新，仅天气为实时。此类信息用于决策前请先核对最新新闻。`;
             } else if (snapAgeDays > 7) {
                 level = 'warn';
-                note = `地缘/通航信息为 ${snapAgeDays} 天前的人工快照，可能滞后于最新局势；天气仍为实时。`;
+                note = `地缘/通航信息为 ${snapAgeDays} 天前的快照，可能滞后于最新局势；天气仍为实时。`;
             }
 
             box.className = 'freshness ' + level;
