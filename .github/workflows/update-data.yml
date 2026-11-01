@@ -1,9 +1,12 @@
 name: Update Shipping Data
 
 on:
-  # 每日一次：03:07 UTC（北京时间 11:07 左右）更新数据并重新部署
+  # 每天更新一次。主窗口 03:07 UTC（北京时间 11:07），补偿窗口 09:07 UTC。
+  # GitHub 的定时任务在高峰时段可能延迟或被丢弃，补偿窗口负责兜底；
+  # 下面的 guard 步骤保证当天已更新过就直接跳过，不会重复更新。
   schedule:
     - cron: '7 3 * * *'
+    - cron: '7 9 * * *'
   # 允许手动触发
   workflow_dispatch:
 
@@ -18,15 +21,31 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: 今日是否已更新（补偿窗口幂等保护）
+        id: guard
+        run: |
+          TODAY=$(TZ=Asia/Shanghai date +%F)
+          CUR=$(python3 -c "import json;print(json.load(open('public/data/full_data.json')).get('data_date',''))" 2>/dev/null || echo "")
+          echo "今日: $TODAY | 当前数据日期: $CUR"
+          if [ "$CUR" = "$TODAY" ] && [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "✅ 今日数据已是 $TODAY，跳过本次补偿运行"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up Python
+        if: steps.guard.outputs.skip != 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
+        if: steps.guard.outputs.skip != 'true'
         run: pip install requests
 
       - name: Run LLM update script
+        if: steps.guard.outputs.skip != 'true'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
