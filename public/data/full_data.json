@@ -1,6 +1,6 @@
 {
   "version": "7.0",
-  "data_date": "2026-11-24",
+  "data_date": "2026-11-25",
   "waterways": [
     {
       "id": "ormuz",
@@ -241,121 +241,121 @@
     "ormuz": {
       "temperature": "26°C",
       "feels_like": "30°C",
-      "wind": "6 km/h 东",
+      "wind": "4 km/h 东北",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "晴朗",
       "condition_icon": "☀️",
-      "humidity": "74%",
-      "updated": "2026-11-23T21:15:23.157687Z",
+      "humidity": "72%",
+      "updated": "2026-11-24T20:06:24.732176Z",
       "data_source": "Open-Meteo API"
     },
     "malacca": {
-      "temperature": "25°C",
-      "feels_like": "31°C",
-      "wind": "4 km/h 南",
+      "temperature": "23°C",
+      "feels_like": "29°C",
+      "wind": "3 km/h 东北",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "阴天",
       "condition_icon": "☁️",
-      "humidity": "97%",
-      "updated": "2026-11-24T13:34:20.953761Z",
+      "humidity": "99%",
+      "updated": "2026-11-24T20:06:24.845372Z",
       "data_source": "Open-Meteo API"
     },
     "suez": {
-      "temperature": "23°C",
-      "feels_like": "22°C",
-      "wind": "11 km/h 北",
+      "temperature": "17°C",
+      "feels_like": "17°C",
+      "wind": "5 km/h 东北",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "晴朗",
       "condition_icon": "☀️",
-      "humidity": "48%",
-      "updated": "2026-11-24T13:34:21.062055Z",
+      "humidity": "72%",
+      "updated": "2026-11-24T20:06:24.902968Z",
       "data_source": "Open-Meteo API"
     },
     "panama": {
-      "temperature": "27°C",
-      "feels_like": "32°C",
-      "wind": "8 km/h 西北",
+      "temperature": "30°C",
+      "feels_like": "34°C",
+      "wind": "16 km/h 西北",
       "wave": "N/A",
       "visibility": "10 km",
-      "condition": "阴天",
-      "condition_icon": "☁️",
-      "humidity": "86%",
-      "updated": "2026-11-24T13:34:21.206500Z",
+      "condition": "小雨",
+      "condition_icon": "🌧️",
+      "humidity": "66%",
+      "updated": "2026-11-24T20:06:24.960113Z",
       "data_source": "Open-Meteo API"
     },
     "mandeb": {
-      "temperature": "29°C",
-      "feels_like": "27°C",
-      "wind": "37 km/h 东南",
+      "temperature": "26°C",
+      "feels_like": "26°C",
+      "wind": "28 km/h 东南",
       "wave": "N/A",
       "visibility": "10 km",
-      "condition": "多云",
-      "condition_icon": "⛅",
-      "humidity": "52%",
-      "updated": "2026-11-24T13:34:21.330803Z",
+      "condition": "晴朗",
+      "condition_icon": "☀️",
+      "humidity": "75%",
+      "updated": "2026-11-24T20:06:25.024538Z",
       "data_source": "Open-Meteo API"
     },
     "cape": {
       "temperature": "18°C",
-      "feels_like": "16°C",
-      "wind": "22 km/h 南",
+      "feels_like": "14°C",
+      "wind": "27 km/h 东南",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "晴朗",
       "condition_icon": "☀️",
-      "humidity": "61%",
-      "updated": "2026-11-24T13:34:21.453449Z",
+      "humidity": "63%",
+      "updated": "2026-11-24T20:06:25.080324Z",
       "data_source": "Open-Meteo API"
     },
     "turkish": {
-      "temperature": "7°C",
-      "feels_like": "4°C",
-      "wind": "5 km/h 西北",
+      "temperature": "3°C",
+      "feels_like": "0°C",
+      "wind": "4 km/h 西",
       "wave": "N/A",
       "visibility": "10 km",
-      "condition": "晴间多云",
-      "condition_icon": "🌤️",
-      "humidity": "56%",
-      "updated": "2026-11-24T13:34:21.642574Z",
+      "condition": "晴朗",
+      "condition_icon": "☀️",
+      "humidity": "60%",
+      "updated": "2026-11-24T20:06:25.197219Z",
       "data_source": "Open-Meteo API"
     },
     "denmark": {
-      "temperature": "1°C",
-      "feels_like": "-4°C",
-      "wind": "24 km/h 南",
+      "temperature": "0°C",
+      "feels_like": "-5°C",
+      "wind": "18 km/h 西南",
       "wave": "N/A",
       "visibility": "10 km",
-      "condition": "晴间多云",
-      "condition_icon": "🌤️",
-      "humidity": "91%",
-      "updated": "2026-11-24T13:34:21.793147Z",
+      "condition": "中雪",
+      "condition_icon": "🌨️",
+      "humidity": "94%",
+      "updated": "2026-11-24T20:06:25.251906Z",
       "data_source": "Open-Meteo API"
     },
     "gibraltar": {
-      "temperature": "17°C",
-      "feels_like": "17°C",
-      "wind": "13 km/h 西",
+      "temperature": "14°C",
+      "feels_like": "14°C",
+      "wind": "7 km/h 西",
+      "wave": "N/A",
+      "visibility": "10 km",
+      "condition": "阴天",
+      "condition_icon": "☁️",
+      "humidity": "81%",
+      "updated": "2026-11-24T20:06:25.312843Z",
+      "data_source": "Open-Meteo API"
+    },
+    "lombok": {
+      "temperature": "28°C",
+      "feels_like": "30°C",
+      "wind": "25 km/h 西南",
       "wave": "N/A",
       "visibility": "10 km",
       "condition": "多云",
       "condition_icon": "⛅",
-      "humidity": "74%",
-      "updated": "2026-11-24T13:34:21.908300Z",
-      "data_source": "Open-Meteo API"
-    },
-    "lombok": {
-      "temperature": "29°C",
-      "feels_like": "32°C",
-      "wind": "24 km/h 西南",
-      "wave": "N/A",
-      "visibility": "10 km",
-      "condition": "晴朗",
-      "condition_icon": "☀️",
-      "humidity": "78%",
-      "updated": "2026-11-24T13:34:22.018791Z",
+      "humidity": "77%",
+      "updated": "2026-11-24T20:06:25.376373Z",
       "data_source": "Open-Meteo API"
     }
   },
@@ -391,8 +391,8 @@
       "live_vessels_today": null,
       "days_closed": 198,
       "data_source": "新华社/路透 2026-09-14 + straits.live 2026-09-15 + UKMTO + Maritime News 2026-09-13",
-      "last_incident": "2026-11-24",
-      "updated": "2026-11-24T21:34:10.659953+08:00"
+      "last_incident": "2026-11-25",
+      "updated": "2026-11-25T04:06:24.671793+08:00"
     },
     "malacca": {
       "risk_level": "中",
@@ -408,13 +408,13 @@
         }
       ],
       "status_icon": "⚠️",
-      "last_incident": "2026-11-24",
-      "updated": "2026-11-24T21:34:10.659953+08:00"
+      "last_incident": "2026-11-25",
+      "updated": "2026-11-25T04:06:24.671793+08:00"
     },
     "suez": {
-      "risk_level": "中",
-      "risk_score": 55,
-      "status": "适度关注",
+      "risk_level": "高",
+      "risk_score": 78,
+      "status": "高度关注",
       "alerts": [
         {
           "type": "逐步恢复",
@@ -425,13 +425,13 @@
         }
       ],
       "status_icon": "⚠️",
-      "last_incident": "2026-11-24",
-      "updated": "2026-11-24T21:34:10.659953+08:00",
+      "last_incident": "2026-11-25",
+      "updated": "2026-11-25T04:06:24.671793+08:00",
       "data_source": "Zencargo 2026-09-08 + BIMCO + S&P Global + SCA"
     },
     "panama": {
       "risk_level": "中",
-      "risk_score": 50,
+      "risk_score": 55,
       "status": "适度关注",
       "alerts": [
         {
@@ -443,14 +443,14 @@
         }
       ],
       "status_icon": "⚠️",
-      "last_incident": "2026-11-24",
-      "updated": "2026-11-24T21:34:10.659953+08:00",
+      "last_incident": "2026-11-25",
+      "updated": "2026-11-25T04:06:24.671793+08:00",
       "data_source": "Windward 2026-09 + Zencargo 2026-09-08 + ACP"
     },
     "mandeb": {
-      "risk_level": "高",
+      "risk_level": "极高",
       "risk_score": 95,
-      "status": "高度关注",
+      "status": "正常通航",
       "alerts": [
         {
           "type": "武装冲突升级",
@@ -460,9 +460,9 @@
           "detail": "胡塞武装已加入伊朗对美国/以色列战争（2026年2月28日起），多次发射弹道导弹和无人机。伊朗推动胡塞准备封锁曼德海峡，但截至目前尚未完全实现。EU Red Sea task force保持高度戒备。沙特通过红海的替代石油运输面临威胁。"
         }
       ],
-      "status_icon": "⚠️",
-      "last_incident": "2026-11-24",
-      "updated": "2026-11-24T21:34:10.659953+08:00",
+      "status_icon": "✅",
+      "last_incident": "2026-11-25",
+      "updated": "2026-11-25T04:06:24.671793+08:00",
       "data_source": "straits.live 2026-09-15 + global-energy-flow 2026-09 + UKMTO"
     },
     "cape": {
@@ -471,12 +471,12 @@
       "status": "正常通航",
       "alerts": [],
       "status_icon": "✅",
-      "last_incident": "2026-11-24",
-      "updated": "2026-11-24T21:34:10.659953+08:00"
+      "last_incident": "2026-11-25",
+      "updated": "2026-11-25T04:06:24.671793+08:00"
     },
     "turkish": {
       "risk_level": "中",
-      "risk_score": 40,
+      "risk_score": 62,
       "status": "适度关注",
       "alerts": [
         {
@@ -488,17 +488,17 @@
         }
       ],
       "status_icon": "⚠️",
-      "last_incident": "2026-11-24",
-      "updated": "2026-11-24T21:34:10.659953+08:00"
+      "last_incident": "2026-11-25",
+      "updated": "2026-11-25T04:06:24.671793+08:00"
     },
     "denmark": {
-      "risk_level": "低",
-      "risk_score": 25,
-      "status": "正常通航",
+      "risk_level": "中",
+      "risk_score": 50,
+      "status": "适度关注",
       "alerts": [],
-      "status_icon": "✅",
-      "last_incident": "2026-11-24",
-      "updated": "2026-11-24T21:34:10.659953+08:00"
+      "status_icon": "⚠️",
+      "last_incident": "2026-11-25",
+      "updated": "2026-11-25T04:06:24.671793+08:00"
     },
     "gibraltar": {
       "risk_level": "低",
@@ -506,17 +506,17 @@
       "status": "正常通航",
       "alerts": [],
       "status_icon": "✅",
-      "last_incident": "2026-11-24",
-      "updated": "2026-11-24T21:34:10.659953+08:00"
+      "last_incident": "2026-11-25",
+      "updated": "2026-11-25T04:06:24.671793+08:00"
     },
     "lombok": {
       "risk_level": "低",
-      "risk_score": 30,
+      "risk_score": 25,
       "status": "正常通航",
       "alerts": [],
       "status_icon": "✅",
-      "last_incident": "2026-11-24",
-      "updated": "2026-11-24T21:34:10.659953+08:00"
+      "last_incident": "2026-11-25",
+      "updated": "2026-11-25T04:06:24.671793+08:00"
     }
   },
   "traffic": {
@@ -524,13 +524,13 @@
       "status": "实际关闭（通行量极低）",
       "wait_hours": "不适用（多数船舶绕行或锚泊待命）",
       "daily_transit": "约18-22艘大型油轮",
-      "queue_status": "高度戒备",
+      "queue_status": "高度紧张",
       "queue_icon": "🔴",
       "congestion_level": "高",
       "risk_score": 98,
-      "notes": "地区局势持续动荡，需警惕无人机及水雷威胁。",
+      "notes": "地区局势持续波动，油轮需加强安全护航。",
       "alternative": "好望角绕行（+10-14 天）；沙特东西向管道（9/11 起停输）；阿联酋富查伊拉路线（本轮周期内亦曾遭袭）",
-      "updated": "2026-11-24T13:34:32.174108Z",
+      "updated": "2026-11-24T20:06:33.869602Z",
       "data_source": "Gemini AI 分析",
       "avg_wait_time": "2-6小时",
       "waiting_ships": 0
@@ -539,13 +539,13 @@
       "status": "繁忙通行",
       "wait_hours": "1-3",
       "daily_transit": "约190艘",
-      "queue_status": "拥挤",
+      "queue_status": "繁忙",
       "queue_icon": "🟡",
       "congestion_level": "中",
       "risk_score": 45,
-      "notes": "航道极度拥堵，近期小规模海盗袭扰事件频发。",
+      "notes": "航道拥挤且海盗活动有所回升，需加强值班。",
       "alternative": "",
-      "updated": "2026-11-24T13:34:32.174125Z",
+      "updated": "2026-11-24T20:06:33.869614Z",
       "data_source": "Gemini AI 分析",
       "avg_wait_time": "1-2小时",
       "waiting_ships": 0
@@ -554,13 +554,13 @@
       "status": "复苏中（仍显著低于危机前）",
       "wait_hours": "不定（逐步恢复中）",
       "daily_transit": "约35-50艘",
-      "queue_status": "受限运行",
-      "queue_icon": "🟡",
+      "queue_status": "受限",
+      "queue_icon": "🔴",
       "congestion_level": "中",
       "risk_score": 62,
-      "notes": "受红海局势余波影响，过境保险费率维持高位。",
+      "notes": "受红海局势余波影响，通行量尚未完全恢复。",
       "alternative": "好望角绕行（亚欧航线 +10-14 天）",
-      "updated": "2026-11-24T13:34:32.174131Z",
+      "updated": "2026-11-24T20:06:33.869621Z",
       "data_source": "Gemini AI 分析",
       "avg_wait_time": "2-4小时",
       "waiting_ships": 0
@@ -569,13 +569,13 @@
       "status": "限流（9/15 起 32 艘/日）",
       "wait_hours": "无预订船只等待时间延长（预订是唯一能保证过闸日期的方式）",
       "daily_transit": "约36艘",
-      "queue_status": "吃水限制",
+      "queue_status": "逐步恢复",
       "queue_icon": "🟡",
       "congestion_level": "低",
       "risk_score": 55,
-      "notes": "极端天气导致水位波动，大型船舶需减少载重。",
+      "notes": "降雨量回升使吃水限制放宽，但预约仍需排队。",
       "alternative": "好望角；美西港口 + 陆运；苏伊士（受红海风险制约）",
-      "updated": "2026-11-24T13:34:32.174136Z",
+      "updated": "2026-11-24T20:06:33.869627Z",
       "data_source": "Gemini AI 分析",
       "avg_wait_time": "1-2小时",
       "waiting_ships": 0
@@ -584,13 +584,13 @@
       "status": "高风险绕行",
       "wait_hours": "不定（护航有限）",
       "daily_transit": "约18艘",
-      "queue_status": "极高风险",
-      "queue_icon": "🔴",
+      "queue_status": "危险",
+      "queue_icon": "🟢",
       "congestion_level": "高",
       "risk_score": 95,
-      "notes": "非对称攻击风险极高，商船多选择绕行好望角。",
+      "notes": "非对称武器袭击风险极高，多数商船选择避让。",
       "alternative": "所有船只绕行好望角",
-      "updated": "2026-11-24T13:34:32.174140Z",
+      "updated": "2026-11-24T20:06:33.869632Z",
       "data_source": "Gemini AI 分析",
       "avg_wait_time": "不确定小时",
       "waiting_ships": 0
@@ -599,13 +599,13 @@
       "status": "分流主通道（运量高）",
       "wait_hours": "1-2",
       "daily_transit": "约100艘",
-      "queue_status": "繁忙",
+      "queue_status": "拥堵",
       "queue_icon": "🟢",
       "congestion_level": "低",
       "risk_score": 40,
-      "notes": "作为红海替代航线，南非港口补给压力巨大。",
+      "notes": "绕行船舶激增，南非主要港口补给压力巨大。",
       "alternative": "",
-      "updated": "2026-11-24T13:34:32.174145Z",
+      "updated": "2026-11-24T20:06:33.869637Z",
       "data_source": "Gemini AI 分析",
       "avg_wait_time": "1小时",
       "waiting_ships": 0
@@ -614,13 +614,13 @@
       "status": "正常通航",
       "wait_hours": "2-4",
       "daily_transit": "约130艘",
-      "queue_status": "严格监管",
+      "queue_status": "监控",
       "queue_icon": "🟡",
       "congestion_level": "低",
       "risk_score": 28,
-      "notes": "黑海冲突持续，博斯普鲁斯海峡检查程序严苛。",
+      "notes": "黑海出口检查严格，等待锚泊时间延长。",
       "alternative": "",
-      "updated": "2026-11-24T13:34:32.174149Z",
+      "updated": "2026-11-24T20:06:33.869641Z",
       "data_source": "Gemini AI 分析",
       "avg_wait_time": "2-4小时",
       "waiting_ships": 0
@@ -629,13 +629,13 @@
       "status": "正常通行",
       "wait_hours": "1",
       "daily_transit": "约15艘",
-      "queue_status": "正常",
-      "queue_icon": "🟢",
+      "queue_status": "敏感",
+      "queue_icon": "🟡",
       "congestion_level": "低",
       "risk_score": 12,
-      "notes": "波罗的海军事演习增加，需关注临时禁航区。",
+      "notes": "波罗的海安全态势升级，针对特定船只检查增加。",
       "alternative": "",
-      "updated": "2026-11-24T13:34:32.174152Z",
+      "updated": "2026-11-24T20:06:33.869646Z",
       "data_source": "Gemini AI 分析",
       "avg_wait_time": "1小时",
       "waiting_ships": 0
@@ -648,9 +648,9 @@
       "queue_icon": "🟢",
       "congestion_level": "低",
       "risk_score": 18,
-      "notes": "航道畅通，主要受地中海冬季强风影响。",
+      "notes": "航运枢纽地位稳固，主要受冬季恶劣天气影响。",
       "alternative": "",
-      "updated": "2026-11-24T13:34:32.174155Z",
+      "updated": "2026-11-24T20:06:33.869650Z",
       "data_source": "Gemini AI 分析",
       "avg_wait_time": "1-2小时",
       "waiting_ships": 0
@@ -659,13 +659,13 @@
       "status": "正常通行（伊朗原油新通道）",
       "wait_hours": "1",
       "daily_transit": "约22艘",
-      "queue_status": "良好",
+      "queue_status": "正常",
       "queue_icon": "🟢",
       "congestion_level": "低",
       "risk_score": 22,
-      "notes": "作为马六甲备选航道，超大型油轮通行量增加。",
+      "notes": "作为马六甲海峡替代航道，大型矿砂船流量上升。",
       "alternative": "",
-      "updated": "2026-11-24T13:34:32.174158Z",
+      "updated": "2026-11-24T20:06:33.869654Z",
       "data_source": "Gemini AI 分析",
       "avg_wait_time": "1小时",
       "waiting_ships": 0
@@ -673,70 +673,70 @@
   },
   "geopolitics": {
     "ormuz": {
-      "status": "高度戒备",
-      "detail": "建议申请海军护航并保持24小时电子侦察。",
-      "last_review": "2026-11-24",
+      "status": "高度紧张",
+      "detail": "建议实时监控地缘动态，保持与海军护航编队联系。",
+      "last_review": "2026-11-25",
       "advisory_level": "高"
     },
     "malacca": {
-      "status": "拥挤",
-      "detail": "加强防海盗值班，严格遵守分道通航制。",
-      "last_review": "2026-11-24",
+      "status": "繁忙",
+      "detail": "建议在夜间航行时开启防海盗高压水炮。",
+      "last_review": "2026-11-25",
       "advisory_level": "中"
     },
     "suez": {
-      "status": "受限运行",
-      "detail": "提前72小时完成过境申报，关注实时安全简报。",
-      "last_review": "2026-11-24",
-      "advisory_level": "中"
+      "status": "受限",
+      "detail": "建议根据保险费率评估是否选择绕行好望角。",
+      "last_review": "2026-11-25",
+      "advisory_level": "高"
     },
     "panama": {
-      "status": "吃水限制",
-      "detail": "实时监控吃水限制公告，预留充足排队时间。",
-      "last_review": "2026-11-24",
+      "status": "逐步恢复",
+      "detail": "建议提前至少30天预约过闸时段。",
+      "last_review": "2026-11-25",
       "advisory_level": "中"
     },
     "mandeb": {
-      "status": "极高风险",
-      "detail": "除非必要，强烈建议绕行好望角以避开攻击。",
-      "last_review": "2026-11-24",
-      "advisory_level": "高"
+      "status": "危险",
+      "detail": "强烈建议非必要不通行，优先选择绕行航线。",
+      "last_review": "2026-11-25",
+      "advisory_level": "极高"
     },
     "cape": {
-      "status": "繁忙",
-      "detail": "提前预订燃油补给，注意南半球夏季气旋影响。",
-      "last_review": "2026-11-24",
+      "status": "拥堵",
+      "detail": "建议提前预订燃油补给，注意南半球夏季气旋。",
+      "last_review": "2026-11-25",
       "advisory_level": "低"
     },
     "turkish": {
-      "status": "严格监管",
-      "detail": "确保所有货物单证合规，配合土耳其当局检查。",
-      "last_review": "2026-11-24",
+      "status": "监控",
+      "detail": "确保所有环保与货物证明文件符合最新国际制裁要求。",
+      "last_review": "2026-11-25",
       "advisory_level": "中"
     },
     "denmark": {
-      "status": "正常",
-      "detail": "密切关注NAVTEX航行通告，避开演习区域。",
-      "last_review": "2026-11-24",
-      "advisory_level": "低"
+      "status": "敏感",
+      "detail": "确保船舶自动识别系统(AIS)全程开启。",
+      "last_review": "2026-11-25",
+      "advisory_level": "中"
     },
     "gibraltar": {
       "status": "正常",
-      "detail": "注意狭窄水道内的避碰安全，关注天气预警。",
-      "last_review": "2026-11-24",
+      "detail": "注意地中海西侧冬季风暴预警，合理安排航速。",
+      "last_review": "2026-11-25",
       "advisory_level": "低"
     },
     "lombok": {
-      "status": "良好",
-      "detail": "注意深水航道流速变化，保持安全航速。",
-      "last_review": "2026-11-24",
+      "status": "正常",
+      "detail": "适合超大型船舶通行，注意深水航道流向变化。",
+      "last_review": "2026-11-25",
       "advisory_level": "低"
     }
   },
   "data_quality": {
     "overall_freshness": "high",
-    "last_major_update": "2026-11-24",
-    "traffic_update_date": "2026-11-24",
+    "last_major_update": "2026-11-25",
+    "traffic_update_date": "2026-11-25",
     "data_quality": {
       "hormuz": {
         "quality": "high",
@@ -812,10 +812,10 @@
       "订阅 Suez Canal Authority 官方每日公报"
     ],
     "note": "天气为 Open-Meteo 实时抓取；地缘政治、通航量、安全事件为人工核实快照，快照日期见 data_date，不会随抓取自动更新。",
-    "llm_status": "ok (2026-11-24 Gemini 分析)"
+    "llm_status": "ok (2026-11-25 Gemini 分析)"
   },
-  "last_updated": "2026-11-24T21:34:10.659953+08:00",
-  "next_update": "2026-11-25T21:34:10.659953+08:00",
+  "last_updated": "2026-11-25T04:06:24.671793+08:00",
+  "next_update": "2026-11-26T04:06:24.671793+08:00",
   "data_sources": {
     "weather": "Open-Meteo API v2 (https://open-meteo.com) - 真实实时海象",
     "traffic": "Kpler + IMF PortWatch + MDS Transmodal + ACP 公告（2026-09 核实）",
